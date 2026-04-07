@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 3 – Cinch Sac: Plan & Cut</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1A7A7A; --teal-dark: #0f5a5a; --teal-light: #D6F0F0;
+    --orange: #E87722; --orange-light: #FDE8D5;
+    --green: #2E7D5E; --green-light: #D4EDE4;
+    --cream: #FDFAF5; --dark: #1a1a1a; --mid: #4a4a4a; --light: #f0ece4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+  nav { background: var(--teal-dark); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  nav .logo { font-family: 'Playfair Display', serif; color: white; font-size: 1.1rem; }
+  nav .week-pills { display: flex; gap: 8px; }
+  nav .week-pills a { color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 600; text-decoration: none; padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
+  nav .week-pills a:hover { background: rgba(255,255,255,0.15); color: white; }
+  nav .week-pills a.active { background: var(--green); color: white; border-color: var(--green); }
+
+  /* HERO — forest green */
+  .hero { background: linear-gradient(135deg, #1a4a35 0%, var(--green) 100%); min-height: 320px; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 60px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: '✁'; position: absolute; right: 80px; top: 20px; font-size: 200px; opacity: 0.07; transform: rotate(15deg); }
+  .hero-text .week-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+  .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 3.6rem; color: white; line-height: 1.05; margin-bottom: 16px; }
+  .hero-text p { color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.65; max-width: 420px; }
+  .hero-stats { display: flex; flex-direction: column; gap: 14px; }
+  .stat-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 24px; color: white; display: flex; align-items: center; gap: 14px; min-width: 210px; }
+  .stat-pill .sp-icon { font-size: 1.5rem; }
+  .stat-pill .sp-text .sp-val { font-weight: 600; font-size: 0.95rem; }
+  .stat-pill .sp-text .sp-label { font-size: 0.75rem; opacity: 0.65; }
+
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--teal); margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+  .section-title::after { content: ''; flex: 1; height: 2px; background: var(--teal-light); }
+  .section-title.green { color: var(--green); }
+  .section-title.green::after { background: var(--green-light); }
+
+  /* PROJECT OVERVIEW */
+  .overview-section { padding: 60px 80px; }
+  .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .overview-text p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+  .pieces-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+  .pieces-table thead th { background: var(--green); color: white; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 16px; text-align: left; }
+  .pieces-table tbody tr:nth-child(even) { background: var(--green-light); }
+  .pieces-table tbody tr:nth-child(odd) { background: white; }
+  .pieces-table tbody td { padding: 14px 16px; font-size: 0.85rem; color: var(--mid); border-bottom: 1px solid rgba(0,0,0,0.04); }
+  .pieces-table tbody td strong { color: var(--dark); }
+
+  /* TIMELINE */
+  .lesson-section { background: var(--light); padding: 60px 80px; }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item { display: grid; grid-template-columns: 120px 48px 1fr; gap: 0; align-items: start; }
+  .t-time { padding: 20px 16px 20px 0; text-align: right; }
+  .t-time span { font-size: 0.76rem; font-weight: 600; color: var(--green); background: var(--green-light); padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .t-mid { display: flex; flex-direction: column; align-items: center; padding-top: 24px; }
+  .t-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .t-line { flex: 1; width: 2px; background: var(--green-light); margin-top: 4px; min-height: 40px; }
+  .timeline-item:last-child .t-line { display: none; }
+  .t-content { padding: 18px 0 32px 16px; }
+  .t-content h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--dark); margin-bottom: 8px; }
+  .t-content p { color: var(--mid); font-size: 0.9rem; line-height: 1.65; }
+
+  /* FABRIC SELECTOR */
+  .fabric-section { padding: 60px 80px; }
+  .fabric-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .fabric-option { border-radius: 20px; padding: 28px 24px; position: relative; overflow: hidden; }
+  .fabric-option.recommended { background: var(--green); color: white; }
+  .fabric-option.good { background: white; border: 2px solid var(--green-light); }
+  .fabric-option.advanced { background: var(--light); border: 2px solid var(--light); }
+  .fab-badge { position: absolute; top: 16px; right: 16px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
+  .recommended .fab-badge { background: rgba(255,255,255,0.2); color: white; }
+  .good .fab-badge { background: var(--green-light); color: var(--green); }
+  .advanced .fab-badge { background: var(--orange-light); color: var(--orange); }
+  .fabric-option h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 10px; }
+  .recommended h3 { color: white; }
+  .fabric-option p { font-size: 0.85rem; line-height: 1.6; }
+  .recommended p { color: rgba(255,255,255,0.8); }
+  .good p, .advanced p { color: var(--mid); }
+  .fab-tip { display: inline-block; margin-top: 12px; font-size: 0.78rem; font-weight: 600; }
+  .recommended .fab-tip { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 8px; }
+  .good .fab-tip { color: var(--green); }
+  .advanced .fab-tip { color: var(--orange); }
+
+  /* CUTTING GUIDE */
+  .cutting-section { background: var(--dark); padding: 60px 80px; }
+  .cutting-section .section-title { color: white; }
+  .cutting-section .section-title::after { background: rgba(255,255,255,0.1); }
+  .cutting-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .cs-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px 20px; }
+  .cs-card .cs-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--green); margin-bottom: 10px; }
+  .cs-card h4 { color: white; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+  .cs-card p { color: rgba(255,255,255,0.6); font-size: 0.82rem; line-height: 1.55; }
+  .cutting-safety { background: var(--orange); border-radius: 16px; padding: 24px 32px; margin-top: 28px; display: flex; align-items: center; gap: 28px; }
+  .cutting-safety .cs-icon { font-size: 2.4rem; flex-shrink: 0; }
+  .cutting-safety h4 { color: white; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+  .cutting-safety ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  .cutting-safety ul li { color: rgba(255,255,255,0.85); font-size: 0.84rem; }
+  .cutting-safety ul li::before { content: '✓ '; font-weight: 700; }
+
+  /* REFLECTION */
+  .reflect-section { padding: 60px 80px; }
+  .reflect-card { background: white; border-radius: 24px; padding: 40px 48px; box-shadow: 0 4px 30px rgba(0,0,0,0.08); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; border-left: 8px solid var(--green); }
+  .reflect-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--green); margin-bottom: 12px; }
+  .reflect-card p { color: var(--mid); font-size: 0.92rem; line-height: 1.65; }
+  .reflect-prompts { display: flex; flex-direction: column; gap: 12px; }
+  .rp { background: var(--green-light); border-radius: 12px; padding: 16px 20px; }
+  .rp span { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 4px; }
+  .rp p { color: var(--dark); font-size: 0.88rem; }
+
+  footer { background: var(--dark); padding: 24px 80px; display: flex; justify-content: space-between; align-items: center; }
+  footer span { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+  .nav-links { display: flex; gap: 16px; }
+  .nav-links a { color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; padding: 8px 20px; border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; transition: all 0.2s; }
+  .nav-links a:hover { background: white; color: var(--dark); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🧵 Grade 6 Sewing</div>
+  <div class="week-pills">
+    <a href="week1.html">Week 1</a>
+    <a href="week2.html">Week 2</a>
+    <a href="week3.html" class="active">Week 3</a>
+    <a href="week4.html">Week 4</a>
+    <a href="week5.html">Week 5</a>
+    <a href="week6.html">Week 6</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="week-label">Week Three</div>
+    <h1>Cinch Sac —<br>Plan &amp; Cut</h1>
+    <p>Choose your fabric, sketch your design, and carefully measure and cut all the pieces for your drawstring book bag.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-pill"><div class="sp-icon">🎒</div><div class="sp-text"><div class="sp-val">Major Project Begins</div><div class="sp-label">Worth 40% of your grade</div></div></div>
+    <div class="stat-pill"><div class="sp-icon">📐</div><div class="sp-text"><div class="sp-val">Measure Twice, Cut Once</div><div class="sp-label">Accuracy is everything today</div></div></div>
+    <div class="stat-pill"><div class="sp-icon">📓</div><div class="sp-text"><div class="sp-val">Reflection Journal</div><div class="sp-label">Due at end of class</div></div></div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview-section">
+  <div class="section-title green">Cinch Sac Project Overview</div>
+  <div class="overview-grid">
+    <div class="overview-text">
+      <p>The cinch sac is your <strong>major project</strong> for this unit. You'll create a real, functional drawstring bag you can actually use — to carry your books, gym clothes, or everyday essentials.</p>
+      <p>Today's job is to plan your design and cut your fabric pieces accurately. Getting this right sets up everything for Weeks 4 and 5. Take your time measuring — small errors now become big problems later!</p>
+      <p>Your bag will have three main fabric pieces plus two drawstring cords. You can use one fabric for everything or mix a main fabric with a contrasting casing.</p>
+    </div>
+    <table class="pieces-table">
+      <thead><tr><th>Piece</th><th>Cut Size</th><th>Qty</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Main bag body</strong></td><td>14" × 16"</td><td>2</td></tr>
+        <tr><td><strong>Casing strips</strong></td><td>3" × 14"</td><td>2</td></tr>
+        <tr><td><strong>Drawstring cord</strong></td><td>45" length</td><td>2</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- LESSON PLAN -->
+<section class="lesson-section">
+  <div class="section-title">Lesson Plan (40 Minutes)</div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="t-time"><span>0:00 – 0:07</span></div>
+      <div class="t-mid"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <h3>Project Introduction &amp; Design Planning</h3>
+        <p>Your teacher will show a completed cinch sac and "deconstruct" it — talk through what parts you can see. Then you'll sketch your bag design in your journal: fabric colour, any decoration you plan, why you chose your fabric. Think about: what makes a <em>good</em> book bag? (Strong seams, comfortable strap, easy to open.)</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-time"><span>0:07 – 0:15</span></div>
+      <div class="t-mid"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <h3>Fabric Types Recap + Selection</h3>
+        <p>Quick review of Week 1 fabric notes — which fabrics work best for a bag? Look at the Fabric Selector below. Choose your main fabric and, if you want, a contrasting fabric for the casing strip. Bring your choices to the teacher for a quick thumbs-up before cutting.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-time"><span>0:15 – 0:35</span></div>
+      <div class="t-mid"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <h3>Measuring &amp; Cutting</h3>
+        <p>Watch the teacher demonstrate: fold fabric → use a ruler from the selvedge edge → mark with chalk → cut on the line. Then you'll measure and cut your own pieces. Label everything with a fabric marker and clip together. Teacher will circulate to check your accuracy before you proceed.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-time"><span>0:35 – 0:40</span></div>
+      <div class="t-mid"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <h3>Reflection Journal + Preview</h3>
+        <p>Write 3–5 sentences: What was challenging about cutting accurately? What are you excited about for your bag? <strong>Next week:</strong> we sew the bag body and attach the drawstring casing!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FABRIC SELECTOR -->
+<section class="fabric-section">
+  <div class="section-title">Which Fabric Should I Choose?</div>
+  <div class="fabric-compare">
+    <div class="fabric-option recommended">
+      <div class="fab-badge">⭐ Best for Beginners</div>
+      <h3>Cotton Canvas</h3>
+      <p>Durable, holds its shape, easy to sew straight seams. The ideal choice for a bag project — sturdy enough to be useful, not too heavy for the machine.</p>
+      <div class="fab-tip">✓ Recommended choice</div>
+    </div>
+    <div class="fabric-option good">
+      <div class="fab-badge">✓ Also Great</div>
+      <h3>Quilting Cotton</h3>
+      <p>Comes in loads of fun prints and colours! Slightly lighter than canvas but still easy to sew. Great if you want your bag to be colourful and personal.</p>
+      <div class="fab-tip">Good for beginners too</div>
+    </div>
+    <div class="fabric-option advanced">
+      <div class="fab-badge">⚠️ More Challenging</div>
+      <h3>Fleece</h3>
+      <p>Soft and cosy, and it doesn't fray! But it's stretchy, which makes it trickier to sew straight. Best if you felt confident with the bookmark.</p>
+      <div class="fab-tip">Ask teacher first</div>
+    </div>
+  </div>
+</section>
+
+<!-- CUTTING GUIDE -->
+<section class="cutting-section">
+  <div class="section-title">How to Cut Your Fabric</div>
+  <div class="cutting-steps">
+    <div class="cs-card"><div class="cs-num">01</div><h4>Fold &amp; Smooth</h4><p>Fold your fabric in half, selvedge edges together. Smooth flat on the table — no wrinkles!</p></div>
+    <div class="cs-card"><div class="cs-num">02</div><h4>Measure From Edge</h4><p>Using a ruler, measure from the selvedge edge inward. Mark your measurement with chalk at two points.</p></div>
+    <div class="cs-card"><div class="cs-num">03</div><h4>Connect the Dots</h4><p>Use the ruler to draw a straight chalk line connecting your marks. This is your cut line.</p></div>
+    <div class="cs-card"><div class="cs-num">04</div><h4>Cut &amp; Label</h4><p>Cut along the chalk line. Label each piece with fabric marker. Clip all pieces for the same bag together.</p></div>
+  </div>
+  <div class="cutting-safety">
+    <div class="cs-icon">✂️</div>
+    <div>
+      <h4>Cutting Safety Rules</h4>
+      <ul>
+        <li>Fabric scissors are for fabric ONLY — never paper</li>
+        <li>Keep fingers curled under while cutting</li>
+        <li>Always cut away from your body</li>
+        <li>Fabric must be flat on the table before you cut</li>
+        <li>Pass scissors handle-first to others</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section class="reflect-section">
+  <div class="reflect-card">
+    <div>
+      <h2>Reflection Journal</h2>
+      <p>Write 3–5 sentences in your journal responding to these prompts. Your teacher will read these to understand how you're feeling about the project. Be honest — there are no wrong answers!</p>
+    </div>
+    <div class="reflect-prompts">
+      <div class="rp"><span>Prompt 1</span><p>What was most challenging about measuring and cutting accurately today?</p></div>
+      <div class="rp"><span>Prompt 2</span><p>Why did you choose the fabric you chose? What do you hope your bag will look like?</p></div>
+      <div class="rp"><span>Prompt 3</span><p>What are you most excited about for this project?</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Grade 6 Family Studies · Six-Week Sewing Unit</span>
+  <div class="nav-links">
+    <a href="week2.html">← Week 2</a>
+    <a href="week4.html">Next: Week 4 →</a>
+  </div>
+</footer>
+
+</body>
+</html>
