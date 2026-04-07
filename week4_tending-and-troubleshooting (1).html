@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 4 — Tending &amp; Troubleshooting</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--hd:#185fa5;--hm:#0c447c;--hl:#6aaed6;--hp:#e8f4fd;--hw:#f3f9fe;--hb:#a8cce4;--soil:#6b4423;--sl:#c4955a;--sp:#fdf5ec;--green:#2d5016;--gp:#e8f5d9;--gb:#bfdb98;--amb:#c67c1a;--ambp:#fef8ec;--red:#9e2a2a;--redp:#fdf0f0;--redb:#e8a8a8;--tx:#1e2c14;--tm:#4a5c38;--mu:#7a8c6a;--bd:#d4e4c0;--wh:#fefffe;--bg:#f7faf3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--bg);color:var(--tx);line-height:1.65;font-size:15px}
+.ph{background:var(--hd);color:#fff;padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 85% 40%,rgba(106,174,214,.2) 0%,transparent 70%);pointer-events:none}
+.hi{position:relative;max-width:820px;margin:0 auto}
+.wp{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:rgba(106,174,214,.25);color:#b8daf0;border:1px solid rgba(106,174,214,.4);border-radius:20px;padding:4px 13px;margin-bottom:.875rem}
+.ht{font-family:'Lora',serif;font-size:clamp(22px,4vw,32px);font-weight:600;line-height:1.2;margin-bottom:.375rem}
+.hs{font-size:13.5px;color:rgba(255,255,255,.65)}
+.tb{display:inline-flex;align-items:center;gap:6px;margin-top:1rem;font-size:12px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px}
+.pb{max-width:820px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+.sl{font-size:10.5px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--mu);margin-bottom:.875rem;margin-top:2.25rem}
+.gb{background:var(--hp);border:1px solid var(--hb);border-radius:12px;padding:1.25rem 1.5rem}
+.gt{font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--hd);margin-bottom:.75rem}
+.gi{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--tm);margin-bottom:.5rem;line-height:1.5}
+.gi:last-child{margin-bottom:0}
+.gc{width:18px;height:18px;border-radius:50%;background:var(--hl);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.gc svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ca{border-radius:10px;padding:1rem 1.25rem;font-size:14px;line-height:1.55}
+.ca-b{background:var(--hw);border:1px solid var(--hb);color:var(--tm)}
+.ca-g{background:var(--gp);border:1px solid var(--gb);color:var(--tm)}
+.ca-a{background:var(--ambp);border:1px solid #e8c488;color:#7a4a0a}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{background:var(--wh);border:1px solid var(--bd);border-radius:12px;overflow:hidden;display:flex}
+.sn{background:var(--hp);color:var(--hd);font-family:'Lora',serif;font-size:17px;font-weight:600;min-width:52px;display:flex;align-items:flex-start;justify-content:center;padding:1.1rem .5rem 0;flex-shrink:0}
+.sb{padding:1rem 1.25rem;flex:1}
+.st{font-weight:500;font-size:14.5px;color:var(--tx);margin-bottom:4px}
+.sd{font-size:14px;color:var(--tm);line-height:1.55}
+.tip{background:var(--sp);border-left:3px solid var(--sl);border-radius:0 8px 8px 0;padding:.5rem .875rem;margin-top:.625rem;font-size:13px;color:var(--soil);line-height:1.5}
+.ss{display:flex;flex-direction:column;gap:6px;margin-top:.625rem}
+.ss div{border-radius:8px;padding:.625rem 1rem;font-size:13.5px;line-height:1.5}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:.875rem}
+.tc{border-radius:10px;padding:1rem 1.125rem;border:1px solid}
+.tc-y{background:#fffbe8;border-color:#e8d888;color:#5a4a08}
+.tc-r{background:var(--redp);border-color:var(--redb);color:var(--red)}
+.tc-b{background:var(--hp);border-color:var(--hb);color:var(--hd)}
+.tc-p{background:#f8f8f0;border-color:#d8d8c0;color:#4a4a30}
+.ts{font-weight:500;font-size:13.5px;margin-bottom:5px}
+.tc2{font-size:12.5px;margin-bottom:3px;opacity:.9}
+.tf{font-size:12.5px;font-style:italic}
+.jw{background:var(--wh);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.jh{background:var(--ambp);border-bottom:1px solid #e8d4b0;padding:.875rem 1.25rem;display:flex;align-items:center;gap:10px}
+.jt{font-family:'Lora',serif;font-size:15px;font-weight:600;color:#7a4a0a}
+.jb{padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.875rem}
+.jp{font-size:14px;color:var(--tm);line-height:1.55;padding-bottom:.875rem;border-bottom:1px dashed var(--bd)}
+.jp:last-child{border-bottom:none;padding-bottom:0}
+.pn{font-weight:500;color:var(--amb);margin-right:4px}
+.ew{background:var(--wh);border:2px solid var(--hl);border-radius:12px;overflow:hidden}
+.eh{background:var(--hd);padding:.875rem 1.25rem}
+.eht{font-family:'Lora',serif;font-size:15px;font-weight:600;color:#fff}
+.eb{padding:1.25rem;display:flex;flex-direction:column;gap:1.25rem}
+.eq{font-size:14px;color:var(--tm);line-height:1.55;padding-bottom:1.25rem;border-bottom:1px solid var(--bd)}
+.eq:last-child{border-bottom:none;padding-bottom:0}
+.eq strong{color:var(--tx);font-weight:500}
+.cg{display:flex;flex-direction:column;gap:7px;margin-top:.625rem}
+.ch{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:.625rem 1rem;cursor:pointer;transition:background .15s;font-size:14px;color:var(--tm)}
+.ch:hover{background:var(--hp);border-color:var(--hl)}
+.ch.sel{background:var(--hp);border-color:var(--hm);color:var(--hd);font-weight:500}
+.cd{width:16px;height:16px;border-radius:50%;border:2px solid var(--bd);flex-shrink:0;transition:all .15s}
+.ch.sel .cd{background:var(--hl);border-color:var(--hm)}
+.or{width:100%;min-height:80px;border:1px solid var(--bd);border-radius:8px;padding:.75rem;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--tx);background:var(--bg);resize:vertical;margin-top:.625rem;line-height:1.55}
+.or:focus{outline:none;border-color:var(--hm);background:var(--wh)}
+.btn{display:block;width:100%;padding:.75rem 1rem;background:var(--hd);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--hm)}
+.rm{display:none;margin-top:.875rem;padding:.875rem 1rem;border-radius:8px;font-size:14px;line-height:1.6}
+.rm-g{background:var(--hp);border:1px solid var(--hb);color:var(--hd)}
+.rm-a{background:var(--ambp);border:1px solid #e8c488;color:#7a4a0a}
+.ors{display:none;background:var(--hp);border:1px solid var(--hb);border-radius:8px;padding:.75rem 1rem;margin-top:.625rem;font-size:13.5px;color:var(--hd)}
+.dv{height:1px;background:var(--bd);margin:2rem 0}
+@media(max-width:580px){.ph{padding:2rem 1.25rem 1.5rem}.pb{padding:1.5rem 1rem 3rem}.step{flex-direction:column}.sn{min-width:auto;padding:.75rem 1.25rem .25rem}.tg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="ph">
+  <div class="hi">
+    <div class="wp">Week 4 of 6 &nbsp;·&nbsp; Hands-On</div>
+    <h1 class="ht">Tending &amp; Troubleshooting</h1>
+    <p class="hs">Growing Food: Seeds to Harvest &nbsp;·&nbsp; Grade 6–7</p>
+    <div class="tb">&#9679; 50 minutes</div>
+  </div>
+</header>
+<div class="pb">
+
+  <div class="sl">Learning goals</div>
+  <div class="gb">
+    <div class="gt">By the end of this class, I can…</div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Record growth measurements and compare the two growing systems</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Identify common plant health problems and propose evidence-based solutions</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Apply a second fertilizer dose and observe changes since Week 2</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Connect crop growing challenges to what large-scale Canadian farmers face</span></div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">What we're doing today</div>
+  <div class="ca ca-b">We're back in our grow space. Plants have now been growing for two weeks since transplanting — today we measure, observe closely, diagnose any problems, apply our second round of fertilizer, and connect our troubleshooting work to the challenges real Canadian farmers face at scale.</div>
+
+  <div class="dv"></div>
+  <div class="sl">Step-by-step &nbsp;·&nbsp; 50 minutes</div>
+  <div class="steps">
+
+    <div class="step">
+      <div class="sn">1</div>
+      <div class="sb">
+        <div class="st">Weekly Plant Check &amp; Measurements &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">8 min</span></div>
+        <div class="sd">Visit both the grow tower and raised beds. For each plant, measure height from soil to the tallest point, note leaf colour and number of leaves, and check for stress signs. Add your data to the class chart. Sketch your plant's current state in your journal and compare to your Week 2 sketch.</div>
+        <div class="tip">Look for patterns: are grow tower plants taller? Are raised bed plants bushier? These differences will matter in Week 6's final comparison.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">2</div>
+      <div class="sb">
+        <div class="st">Diagnosing Plant Problems &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">Even careful growers encounter problems. Learn to read what a plant is telling you.</div>
+        <div class="tg">
+          <div class="tc tc-y"><div class="ts">Yellowing leaves</div><div class="tc2">Cause: Nitrogen deficiency or overwatering</div><div class="tf">Fix: Check drainage; consider fertilizer</div></div>
+          <div class="tc tc-p"><div class="ts">Leggy / stretched stem</div><div class="tc2">Cause: Not enough light — plant reaches for it</div><div class="tf">Fix: Move closer to a light source</div></div>
+          <div class="tc tc-b"><div class="ts">Wilting leaves</div><div class="tc2">Cause: Underwatering OR overwatering</div><div class="tf">Fix: Check soil moisture before acting</div></div>
+          <div class="tc tc-r"><div class="ts">Brown leaf edges</div><div class="tc2">Cause: Over-fertilizing or too much direct sun</div><div class="tf">Fix: Flush soil with water; reduce fertilizer</div></div>
+        </div>
+        <div class="ca ca-b" style="margin-top:.875rem"><strong>Your turn:</strong> Look at your plants right now. Do any show these symptoms? With a partner, hypothesize a cause and propose a solution. Be ready to share with the class.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">3</div>
+      <div class="sb">
+        <div class="st">Canadian Crop Connection — Farmers Face This Too &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">8 min</span></div>
+        <div class="sd">The problems you're diagnosing in our classroom garden happen on a massive scale for Canadian farmers. Discussion questions:</div>
+        <div class="ss">
+          <div class="ca-g">How would a Prairie wheat farmer identify nitrogen deficiency across thousands of hectares? (Hint: satellite imaging and soil testing.)</div>
+          <div class="ca-g">Why might a pulse crop help the cereal crop grown in the same field the following year? Connect to what you learned in Week 3 about nitrogen fixation.</div>
+          <div class="ca-g">If a forage crop field shows signs of overwatering after heavy rain, what options does a farmer have that we don't in a classroom?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">4</div>
+      <div class="sb">
+        <div class="st">Second Fertilizer Application &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">Before applying, observe your plants carefully and answer these in your journal:</div>
+        <div class="ss">
+          <div class="ca-a">① Are leaves a deeper green than Week 2? This may indicate the first dose worked.</div>
+          <div class="ca-a">② Has stem thickness changed? Note rough estimate in mm if possible.</div>
+          <div class="ca-a">③ Apply at the base — not on leaves. Record: date, amount, observations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">5</div>
+      <div class="sb">
+        <div class="st">Peer Share — Your Best Observation &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">12 min</span></div>
+        <div class="sd">Each person shares one observation or challenge from their journal using a sentence frame:</div>
+        <div class="ss">
+          <div class="ca-b" style="font-style:italic">"I noticed that my plant ________, which I think happened because ________."</div>
+          <div class="ca-b" style="font-style:italic">"Between Week 2 and Week 4, my plant changed by ________. I predict this because ________."</div>
+          <div class="ca-b" style="font-style:italic">"One challenge I ran into was ________. I tried ________, and next time I would ________."</div>
+        </div>
+        <div class="tip">Classmates respond with: "I noticed something similar…" or "Have you considered…?"</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">6</div>
+      <div class="sb">
+        <div class="st">Update Class Data Chart &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">2 min</span></div>
+        <div class="sd">The Recorder adds today's height and health observations to the class chart. Make sure Week 2 and Week 4 data are both recorded for comparison.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">Garden journal — Week 4 entry</div>
+  <div class="jw">
+    <div class="jh"><span style="font-size:18px">📓</span><span class="jt">Complete before next class</span></div>
+    <div class="jb">
+      <div class="jp"><span class="pn">1.</span>Record your Week 4 measurements: height, leaf colour, number of leaves, any changes from Week 2. What is the most noticeable change?</div>
+      <div class="jp"><span class="pn">2.</span>Does your plant show any of the problem symptoms from today's lesson? If yes, identify the likely cause and what you did or plan to do. If no, describe what healthy growth looks like for your plant.</div>
+      <div class="jp"><span class="pn">3.</span>Record your second fertilizer application: date, amount, and changes observed before applying. What do you predict by Week 6?</div>
+      <div class="jp"><span class="pn">4.</span>How does the challenge of diagnosing plant problems in our classroom connect to what a large-scale Canadian farmer would face? Name one tool or strategy a farmer might use that we can't in our space.</div>
+    </div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">Exit ticket</div>
+  <div class="ew">
+    <div class="eh"><div class="eht">Quick check — Week 4</div></div>
+    <div class="eb">
+
+      <div class="eq">
+        <strong>Q1 — Multiple choice.</strong> A plant's lower leaves are yellowing while upper leaves look healthy. Based on today's lesson, what is the most likely cause?
+        <div class="cg" id="q1">
+          <div class="ch" onclick="pick('q1','a')"><div class="cd"></div>The plant is getting too much light</div>
+          <div class="ch" onclick="pick('q1','b')"><div class="cd"></div>Nitrogen deficiency or overwatering — older leaves are affected first</div>
+          <div class="ch" onclick="pick('q1','c')"><div class="cd"></div>Over-fertilization with potassium</div>
+          <div class="ch" onclick="pick('q1','d')"><div class="cd"></div>Not enough phosphorus for fruit production</div>
+        </div>
+      </div>
+
+      <div class="eq">
+        <strong>Q2 — Multiple choice.</strong> You applied fertilizer to a plant's leaves instead of the base. What is the most likely consequence?
+        <div class="cg" id="q2">
+          <div class="ch" onclick="pick('q2','a')"><div class="cd"></div>The leaves will absorb extra nutrients and grow faster</div>
+          <div class="ch" onclick="pick('q2','b')"><div class="cd"></div>Nothing — plants absorb nutrients equally from leaves and roots</div>
+          <div class="ch" onclick="pick('q2','c')"><div class="cd"></div>The leaves may become scorched, especially in bright sunlight</div>
+          <div class="ch" onclick="pick('q2','d')"><div class="cd"></div>The roots will stop absorbing nutrients from the soil</div>
+        </div>
+      </div>
+
+      <div class="eq">
+        <strong>Q3 — Open response.</strong> In Week 3, you learned that pulse crops fix nitrogen into the soil. How does this connect to the fertilizer work you've been doing in Weeks 2 and 4? If a farmer rotated pulses into a field, how might that change their fertilizing approach the following year?
+        <textarea class="or" id="q3" placeholder="Write your response here…"></textarea>
+        <div class="ors" id="q3s"></div>
+      </div>
+
+      <button class="btn" onclick="sub()">Submit exit ticket</button>
+      <div class="rm" id="rm"></div>
+    </div>
+  </div>
+
+</div>
+<script>
+const ans={q1:'b',q2:'c'};
+const sel={};
+const fb={q1:'Yellowing that starts with older lower leaves often signals nitrogen deficiency or root problems from overwatering — the plant moves remaining nitrogen from older leaves to new growth.',q2:'Fertilizer on leaves can scorch them in sun or cause chemical burns. Roots are the primary nutrient-absorption organ, so base application is correct.'};
+function pick(q,v){sel[q]=v;document.getElementById(q).querySelectorAll('.ch').forEach((el,i)=>el.classList.toggle('sel',['a','b','c','d'][i]===v));}
+function sub(){
+  const t=document.getElementById('q3').value.trim();
+  if(t){const s=document.getElementById('q3s');s.style.display='block';s.innerHTML='<strong>Your response:</strong> '+t;}
+  let c=0;['q1','q2'].forEach(q=>{if(sel[q]===ans[q])c++;});
+  const m=document.getElementById('rm');m.style.display='block';
+  let h='<strong>Multiple choice: '+c+'/2</strong><br><br>';
+  ['q1','q2'].forEach((q,i)=>{const mk=sel[q]===ans[q]?'✓':'✗';h+='<strong>Q'+(i+1)+' '+mk+':</strong> '+fb[q]+'<br><br>';});
+  h+=t?'<strong>Q3:</strong> Response recorded. Strong answers link nitrogen fixation (pulse crops enriching soil) to reduced need for synthetic nitrogen fertilizer the following season — a key crop rotation strategy.':'<strong>Q3:</strong> Don\'t forget your open response above!';
+  m.className='rm '+(c===2?'rm-g':'rm-a');m.innerHTML=h;
+}
+</script>
+</body>
+</html>

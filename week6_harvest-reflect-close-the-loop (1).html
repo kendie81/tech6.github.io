@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 6 — Harvest, Reflect &amp; Close the Loop</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--hd:#854f0b;--hm:#7a4a0a;--hl:#ef9f27;--hp:#fef8ec;--hw:#fffdf5;--hb:#e8c488;--soil:#6b4423;--sl:#c4955a;--sp:#fdf5ec;--green:#2d5016;--gm:#4a7c2f;--gl:#7ab648;--gp:#e8f5d9;--gb:#bfdb98;--sky:#3a7ca5;--skyp:#e8f4fd;--pur:#5a3a88;--purp:#f0eaf8;--purb:#d0b8f0;--tx:#1e2c14;--tm:#4a5c38;--mu:#7a8c6a;--bd:#d4e4c0;--wh:#fefffe;--bg:#f7faf3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--bg);color:var(--tx);line-height:1.65;font-size:15px}
+.ph{background:var(--hd);color:#fff;padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 85% 40%,rgba(239,159,39,.2) 0%,transparent 70%);pointer-events:none}
+.hi{position:relative;max-width:820px;margin:0 auto}
+.wp{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:rgba(239,159,39,.25);color:#fac888;border:1px solid rgba(239,159,39,.4);border-radius:20px;padding:4px 13px;margin-bottom:.875rem}
+.ht{font-family:'Lora',serif;font-size:clamp(22px,4vw,32px);font-weight:600;line-height:1.2;margin-bottom:.375rem}
+.hs{font-size:13.5px;color:rgba(255,255,255,.65)}
+.tb{display:inline-flex;align-items:center;gap:6px;margin-top:1rem;font-size:12px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px}
+.pb{max-width:820px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+.sl{font-size:10.5px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--mu);margin-bottom:.875rem;margin-top:2.25rem}
+.gb{background:var(--hp);border:1px solid var(--hb);border-radius:12px;padding:1.25rem 1.5rem}
+.gt{font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--hd);margin-bottom:.75rem}
+.gi{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--tm);margin-bottom:.5rem;line-height:1.5}
+.gi:last-child{margin-bottom:0}
+.gc{width:18px;height:18px;border-radius:50%;background:var(--hl);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.gc svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ca{border-radius:10px;padding:1rem 1.25rem;font-size:14px;line-height:1.55}
+.ca-h{background:var(--hp);border:1px solid var(--hb);color:var(--hm)}
+.ca-g{background:var(--gp);border:1px solid var(--gb);color:var(--tm)}
+.ca-s{background:var(--skyp);border:1px solid #a8cce4;color:#1a5070}
+.ca-p{background:var(--purp);border:1px solid var(--purb);color:var(--pur)}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{background:var(--wh);border:1px solid var(--bd);border-radius:12px;overflow:hidden;display:flex}
+.sn{background:var(--hp);color:var(--hd);font-family:'Lora',serif;font-size:17px;font-weight:600;min-width:52px;display:flex;align-items:flex-start;justify-content:center;padding:1.1rem .5rem 0;flex-shrink:0}
+.sb{padding:1rem 1.25rem;flex:1}
+.st{font-weight:500;font-size:14.5px;color:var(--tx);margin-bottom:4px}
+.sd{font-size:14px;color:var(--tm);line-height:1.55}
+.tip{background:var(--sp);border-left:3px solid var(--sl);border-radius:0 8px 8px 0;padding:.5rem .875rem;margin-top:.625rem;font-size:13px;color:var(--soil);line-height:1.5}
+.ss{display:flex;flex-direction:column;gap:6px;margin-top:.625rem}
+.ss div{border-radius:8px;padding:.625rem 1rem;font-size:13.5px;line-height:1.5}
+.cycle{background:var(--wh);border:1px solid var(--bd);border-radius:12px;padding:1.25rem;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:1rem}
+.cn{background:var(--gp);border:1px solid var(--gb);border-radius:20px;padding:.5rem 1.1rem;font-size:13.5px;font-weight:500;color:var(--green)}
+.ca2{color:var(--gl);font-size:16px}
+.rip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:.75rem}
+.rc{background:var(--wh);border:1px solid var(--bd);border-radius:10px;padding:.875rem 1rem;text-align:center}
+.re{font-size:20px;margin-bottom:5px}
+.rl{font-weight:500;font-size:13px;color:var(--tx);margin-bottom:3px}
+.rd{font-size:12px;color:var(--mu);line-height:1.4}
+.dtbl{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--wh);border-radius:10px;overflow:hidden;border:1px solid var(--bd)}
+.dtbl th{background:var(--hp);color:var(--hd);font-weight:500;padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--hb);font-size:13px}
+.dtbl td{padding:.75rem 1rem;border-bottom:1px solid var(--bd);color:var(--tm)}
+.dtbl tr:last-child td{border-bottom:none}
+.dtbl td:first-child{font-weight:500;color:var(--tx)}
+.cl{display:flex;flex-direction:column;gap:8px}
+.ci{display:flex;align-items:flex-start;gap:12px;background:var(--wh);border:1px solid var(--bd);border-radius:8px;padding:.75rem 1rem;cursor:pointer;transition:background .15s}
+.ci:hover{background:var(--hp)}
+.ci.chk{background:var(--hp);border-color:var(--hb)}
+.cb{width:20px;height:20px;border-radius:4px;border:2px solid var(--bd);flex-shrink:0;margin-top:1px;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.ci.chk .cb{background:var(--hl);border-color:var(--hd)}
+.cb svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;display:none}
+.ci.chk .cb svg{display:block}
+.ct{font-size:14px;color:var(--tm);line-height:1.5}
+.banner{background:var(--green);color:#fff;border-radius:12px;padding:1.5rem;text-align:center;margin-top:2rem}
+.bt{font-family:'Lora',serif;font-size:20px;font-weight:600;margin-bottom:.375rem}
+.bs{font-size:13.5px;color:rgba(255,255,255,.75)}
+.jw{background:var(--wh);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.jh{background:var(--hp);border-bottom:1px solid var(--hb);padding:.875rem 1.25rem;display:flex;align-items:center;gap:10px}
+.jt{font-family:'Lora',serif;font-size:15px;font-weight:600;color:var(--hm)}
+.jb{padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.875rem}
+.jp{font-size:14px;color:var(--tm);line-height:1.55;padding-bottom:.875rem;border-bottom:1px dashed var(--bd)}
+.jp:last-child{border-bottom:none;padding-bottom:0}
+.pn{font-weight:500;color:var(--hd);margin-right:4px}
+.ew{background:var(--wh);border:2px solid var(--hl);border-radius:12px;overflow:hidden}
+.eh{background:var(--hd);padding:.875rem 1.25rem}
+.eht{font-family:'Lora',serif;font-size:15px;font-weight:600;color:#fff}
+.eb{padding:1.25rem;display:flex;flex-direction:column;gap:1.25rem}
+.eq{font-size:14px;color:var(--tm);line-height:1.55;padding-bottom:1.25rem;border-bottom:1px solid var(--bd)}
+.eq:last-child{border-bottom:none;padding-bottom:0}
+.eq strong{color:var(--tx);font-weight:500}
+.cg{display:flex;flex-direction:column;gap:7px;margin-top:.625rem}
+.ch{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:.625rem 1rem;cursor:pointer;transition:background .15s;font-size:14px;color:var(--tm)}
+.ch:hover{background:var(--hp);border-color:var(--hl)}
+.ch.sel{background:var(--hp);border-color:var(--hd);color:var(--hm);font-weight:500}
+.cd{width:16px;height:16px;border-radius:50%;border:2px solid var(--bd);flex-shrink:0;transition:all .15s}
+.ch.sel .cd{background:var(--hl);border-color:var(--hd)}
+.or{width:100%;min-height:90px;border:1px solid var(--bd);border-radius:8px;padding:.75rem;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--tx);background:var(--bg);resize:vertical;margin-top:.625rem;line-height:1.55}
+.or:focus{outline:none;border-color:var(--hd);background:var(--wh)}
+.btn{display:block;width:100%;padding:.75rem 1rem;background:var(--hd);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--hm)}
+.rm{display:none;margin-top:.875rem;padding:.875rem 1rem;border-radius:8px;font-size:14px;line-height:1.6}
+.rm-g{background:var(--gp);border:1px solid var(--gb);color:var(--green)}
+.rm-a{background:var(--hp);border:1px solid var(--hb);color:var(--hm)}
+.ors{display:none;background:var(--gp);border:1px solid var(--gb);border-radius:8px;padding:.75rem 1rem;margin-top:.625rem;font-size:13.5px;color:var(--green)}
+.dv{height:1px;background:var(--bd);margin:2rem 0}
+@media(max-width:580px){.ph{padding:2rem 1.25rem 1.5rem}.pb{padding:1.5rem 1rem 3rem}.step{flex-direction:column}.sn{min-width:auto;padding:.75rem 1.25rem .25rem}.rip{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header class="ph">
+  <div class="hi">
+    <div class="wp">Week 6 of 6 &nbsp;·&nbsp; Final Class</div>
+    <h1 class="ht">Harvest, Reflect &amp; Close the Loop</h1>
+    <p class="hs">Growing Food: Seeds to Harvest &nbsp;·&nbsp; Grade 6–7</p>
+    <div class="tb">&#9679; 50 minutes</div>
+  </div>
+</header>
+<div class="pb">
+
+  <div class="sl">Learning goals</div>
+  <div class="gb">
+    <div class="gt">By the end of this class, I can…</div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Identify ripeness cues and harvest vegetables at the right time</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Save seeds from my own harvested plant — completing the seed cycle</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Compare grow tower and raised bed results using 6 weeks of data</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Reflect on my learning and connect growing food to Canadian agriculture and community</span></div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">What we're doing today</div>
+  <div class="ca ca-h">This is our final class — and the most rewarding one. Today we harvest, save seeds from our own plants (closing the loop from Week 1), compare our two growing systems using all 6 weeks of data, complete a self-assessment, and celebrate what we've built together. Your seed envelope goes home today — your next growing season starts whenever you're ready.</div>
+
+  <!-- Seed cycle -->
+  <div class="cycle">
+    <div class="cn">Save seeds (Wk 1)</div>
+    <div class="ca2">&#8594;</div>
+    <div class="cn">Start seeds</div>
+    <div class="ca2">&#8594;</div>
+    <div class="cn">Transplant &amp; tend</div>
+    <div class="ca2">&#8594;</div>
+    <div class="cn">Troubleshoot</div>
+    <div class="ca2">&#8594;</div>
+    <div class="cn">Harvest</div>
+    <div class="ca2">&#8594;</div>
+    <div class="cn">Save seeds (Wk 6)</div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">Step-by-step &nbsp;·&nbsp; 50 minutes</div>
+  <div class="steps">
+
+    <div class="step">
+      <div class="sn">1</div>
+      <div class="sb">
+        <div class="st">Final Measurements &amp; Harvest &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">Take your final height and observation measurements for plants in both growing systems — this is your last data point for the comparison chart in Step 3. Then harvest any mature vegetables by checking these ripeness cues:</div>
+        <div class="rip">
+          <div class="rc"><div class="re">🎨</div><div class="rl">Colour</div><div class="rd">Reached expected colour for the variety</div></div>
+          <div class="rc"><div class="re">📏</div><div class="rl">Size</div><div class="rd">Reached mature size — not too small</div></div>
+          <div class="rc"><div class="re">✋</div><div class="rl">Firmness</div><div class="rd">Firm but yields slightly to pressure</div></div>
+          <div class="rc"><div class="re">🔗</div><div class="rl">Release</div><div class="rd">Releases easily from stem with gentle twist</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">2</div>
+      <div class="sb">
+        <div class="st">Seed Saving from Our Own Harvest &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">In Week 1, we saved seeds from a store-bought vegetable. Today we close the loop — saving seeds from plants we grew ourselves. These carry the genetics of our own growing season.</div>
+        <div class="ss">
+          <div class="ca-g">① Choose the healthiest, most mature vegetable from your plant.</div>
+          <div class="ca-g">② Extract seeds, rinse, and float-test. Good seeds sink.</div>
+          <div class="ca-g">③ Dry on a paper towel. Label your envelope: variety, date, "grown by [your name]."</div>
+          <div class="ca-g">④ These seeds go home with you — grow them again next season.</div>
+        </div>
+        <div class="ca ca-p" style="margin-top:.75rem"><strong>Think about it:</strong> Saving seeds from your own plant is the same principle that has sustained farming for thousands of years — and that Canadian farmers still use when selecting seed stock. How does seed saving connect to food independence and the Canadian crop cycle you studied in Week 3?</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">3</div>
+      <div class="sb">
+        <div class="st">Grow Tower vs. Raised Bed — 6-Week Data Comparison &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">Use your journal data from all 6 weeks to fill in the table below, then write an evidence-based conclusion paragraph.</div>
+        <div style="margin-top:.875rem;overflow-x:auto">
+          <table class="dtbl">
+            <tr><th>Measurement</th><th>Grow Tower</th><th>Raised Bed</th></tr>
+            <tr><td>Week 2 height (cm)</td><td>______</td><td>______</td></tr>
+            <tr><td>Week 4 height (cm)</td><td>______</td><td>______</td></tr>
+            <tr><td>Week 6 height (cm)</td><td>______</td><td>______</td></tr>
+            <tr><td>Total growth (cm)</td><td>______</td><td>______</td></tr>
+            <tr><td>Leaf colour (Week 6)</td><td>______</td><td>______</td></tr>
+            <tr><td>Problems observed</td><td>______</td><td>______</td></tr>
+            <tr><td>Overall health (1–5)</td><td>______</td><td>______</td></tr>
+          </table>
+        </div>
+        <div class="ca ca-h" style="margin-top:.875rem"><strong>Conclusion paragraph (in journal):</strong> Which system produced better results? What variables might explain the difference — light, watering method, root space, plant type? Use data as evidence. Connect to what you learned about grow tower crops vs. field crops in Week 3.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">4</div>
+      <div class="sb">
+        <div class="st">Self-Assessment Checklist &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">8 min</span></div>
+        <div class="sd">Check each statement that honestly reflects your experience across the full 6 weeks. This is for your own reflection — be honest.</div>
+        <div class="cl" style="margin-top:.875rem" id="cl">
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I followed my care role responsibilities consistently</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I recorded observations in my journal each week</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I successfully saved seeds from a mature vegetable (Week 1)</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I started seeds in a tray and tracked their growth</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I watered and fertilized plants correctly across the unit</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I identified a plant problem and proposed a solution (Week 4)</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I can name and describe the five Canadian crop categories from Week 3</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I can explain one connection between growing food and sustainability</div></div>
+          <div class="ci" onclick="tog(this)"><div class="cb"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><div class="ct">I shared observations with classmates using evidence from my journal</div></div>
+        </div>
+        <div class="tip" style="margin-top:.875rem">Any unchecked items deserve a sentence in your journal: "Something I would do differently is ________."</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">5</div>
+      <div class="sb">
+        <div class="st">Celebration &amp; Community Connection &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">Display your journals and data charts. Your seed envelope goes home today. Closing discussion:</div>
+        <div class="ss">
+          <div class="ca-g">"Where does most of the food in our community come from — and how far has it travelled?"</div>
+          <div class="ca-g">"Which of Canada's five crop categories do we eat most often? Could any of them be grown here in NB?"</div>
+          <div class="ca-g">"What would it take to grow even 10% of your family's vegetables at home?"</div>
+          <div class="ca-g">"How does seed saving connect to food independence and the long history of agriculture in Canada?"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">6</div>
+      <div class="sb">
+        <div class="st">Submit Garden Journal &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">2 min</span></div>
+        <div class="sd">Your completed garden journal — all 6 weeks of entries, sketches, data, and your Week 6 comparison paragraph — is due today. Make sure your name and all weekly entries are included.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">Garden journal — final submission entry</div>
+  <div class="jw">
+    <div class="jh"><span style="font-size:18px">📓</span><span class="jt">Final entry — due today with full journal</span></div>
+    <div class="jb">
+      <div class="jp"><span class="pn">1.</span>Record your Week 6 final measurements and harvest observations. What ripeness cues told you the vegetable was ready?</div>
+      <div class="jp"><span class="pn">2.</span>Describe your second seed-saving experience. How was saving seeds from your own plant different from saving them from a store vegetable in Week 1? What does this mean for food sustainability?</div>
+      <div class="jp"><span class="pn">3.</span>Using your data table, write a conclusion paragraph comparing the grow tower and raised beds over 6 weeks. Which performed better for your plant and why? Use at least two data points as evidence.</div>
+      <div class="jp"><span class="pn">4.</span>What is the most important thing you learned in this unit? What surprised you? Connect your learning to at least one of the five Canadian crop categories from Week 3.</div>
+    </div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">Exit ticket</div>
+  <div class="ew">
+    <div class="eh"><div class="eht">Quick check — Week 6</div></div>
+    <div class="eb">
+
+      <div class="eq">
+        <strong>Q1 — Multiple choice.</strong> You harvest a tomato and find it is very soft with a mealy texture inside. What does this tell you about when it was harvested?
+        <div class="cg" id="q1">
+          <div class="ch" onclick="pick('q1','a')"><div class="cd"></div>It was harvested at the perfect moment of ripeness</div>
+          <div class="ch" onclick="pick('q1','b')"><div class="cd"></div>It was harvested too early, before it ripened fully</div>
+          <div class="ch" onclick="pick('q1','c')"><div class="cd"></div>It was left on the vine too long and became overripe</div>
+          <div class="ch" onclick="pick('q1','d')"><div class="cd"></div>It did not receive enough fertilizer during growing</div>
+        </div>
+      </div>
+
+      <div class="eq">
+        <strong>Q2 — Multiple choice.</strong> Your 6-week data shows the raised bed plants grew 14 cm taller than the grow tower plants. Which is the strongest evidence-based conclusion?
+        <div class="cg" id="q2">
+          <div class="ch" onclick="pick('q2','a')"><div class="cd"></div>Raised beds are always better than grow towers for all plants and all conditions</div>
+          <div class="ch" onclick="pick('q2','b')"><div class="cd"></div>The grow tower was broken and produced unreliable results</div>
+          <div class="ch" onclick="pick('q2','c')"><div class="cd"></div>For this plant variety in these conditions, the raised bed supported more growth — possibly due to root space, watering method, or light access</div>
+          <div class="ch" onclick="pick('q2','d')"><div class="cd"></div>Height is not a useful way to measure plant health or success</div>
+        </div>
+      </div>
+
+      <div class="eq">
+        <strong>Q3 — Open response.</strong> This unit covered seed saving, starting seeds, watering, fertilizing, troubleshooting, and Canadian crops. Choose the skill or concept you found most valuable and explain how it connects to something in the real world — whether in Canadian agriculture, your community, or your own life.
+        <textarea class="or" id="q3" placeholder="Write your response here…"></textarea>
+        <div class="ors" id="q3s"></div>
+      </div>
+
+      <button class="btn" onclick="sub()">Submit exit ticket</button>
+      <div class="rm" id="rm"></div>
+    </div>
+  </div>
+
+  <div class="banner">
+    <div class="bt">Unit complete — well done!</div>
+    <div class="bs">You've grown food from seed to harvest across 6 weeks, explored Canadian agriculture, saved seeds twice, and built skills that connect to real food systems. Take your seed envelope home — your next growing season starts whenever you're ready.</div>
+  </div>
+
+</div>
+<script>
+const ans={q1:'c',q2:'c'};
+const sel={};
+const fb={q1:'A very soft, mealy tomato has been left on the vine past peak ripeness. Cell walls break down over time. Harvest when the vegetable is firm but yields slightly to gentle pressure.',q2:'Strong conclusions are specific to the conditions tested — not universal claims. Height difference could reflect root space, watering patterns, or light access. Good scientists acknowledge variables rather than overgeneralizing.'};
+function pick(q,v){sel[q]=v;document.getElementById(q).querySelectorAll('.ch').forEach((el,i)=>el.classList.toggle('sel',['a','b','c','d'][i]===v));}
+function tog(el){el.classList.toggle('chk');}
+function sub(){
+  const t=document.getElementById('q3').value.trim();
+  if(t){const s=document.getElementById('q3s');s.style.display='block';s.innerHTML='<strong>Your response:</strong> '+t;}
+  let c=0;['q1','q2'].forEach(q=>{if(sel[q]===ans[q])c++;});
+  const m=document.getElementById('rm');m.style.display='block';
+  let h='<strong>Multiple choice: '+c+'/2</strong><br><br>';
+  ['q1','q2'].forEach((q,i)=>{const mk=sel[q]===ans[q]?'✓':'✗';h+='<strong>Q'+(i+1)+' '+mk+':</strong> '+fb[q]+'<br><br>';});
+  h+=t?'<strong>Q3:</strong> Response recorded. Strong answers make a specific real-world connection — such as seed saving to food security, nitrogen fixation to sustainable Prairie farming, or water conservation to drought resilience in Canadian agriculture.':'<strong>Q3:</strong> Don\'t forget your open response above!';
+  m.className='rm '+(c===2?'rm-g':'rm-a');m.innerHTML=h;
+}
+</script>
+</body>
+</html>
