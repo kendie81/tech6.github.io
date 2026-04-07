@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 6 – Digital Design: Canva + Cricut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#1A7A7A;--teal-dk:#0f5a5a;--teal-lt:#D6F0F0;--orange:#E87722;--orange-lt:#FDE8D5;--indigo:#2D3580;--indigo-lt:#E2E4F5;--cream:#FDFAF5;--dark:#1a1a1a;--mid:#4a4a4a;--light:#f0ece4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
+
+  nav{background:var(--teal-dk);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .nav-logo{font-family:'Playfair Display',serif;color:#fff;font-size:1rem;}
+  .nav-pills{display:flex;gap:6px;flex-wrap:wrap;}
+  .nav-pills a{color:rgba(255,255,255,.6);font-size:.72rem;font-weight:600;text-decoration:none;padding:5px 11px;border-radius:20px;border:1px solid rgba(255,255,255,.2);transition:all .2s;}
+  .nav-pills a:hover{background:rgba(255,255,255,.15);color:#fff;}
+  .nav-pills a.active{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+
+  .hero{background:linear-gradient(135deg,#0d1038,var(--indigo),#4952B0);padding:64px 80px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;right:-100px;top:-100px;width:460px;height:460px;background:radial-gradient(circle,rgba(100,120,255,.14) 0%,transparent 70%);}
+  .floating-icons{position:absolute;right:80px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;}
+  .fi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 18px;color:#fff;text-align:center;font-size:1.6rem;}
+  .fi .fil{font-size:.65rem;opacity:.6;letter-spacing:.08em;text-transform:uppercase;margin-top:4px;}
+  .week-label{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;color:#fff;line-height:1.05;margin-bottom:14px;max-width:520px;}
+  .hero p{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.65;max-width:460px;}
+  .hero-badges{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;}
+  .hb{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);font-size:.78rem;font-weight:500;padding:7px 15px;border-radius:20px;border:1px solid rgba(255,255,255,.14);}
+  .hb.hi{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600;}
+
+  .section{padding:56px 80px;}
+  .section.alt{background:var(--light);}
+  .section.dk{background:var(--dark);}
+  .sec-title{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--teal);margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+  .sec-title::after{content:'';flex:1;height:2px;background:var(--teal-lt);}
+  .sec-title.indigo{color:var(--indigo);}
+  .sec-title.indigo::after{background:var(--indigo-lt);}
+  .sec-title.on-dark{color:#fff;}
+  .sec-title.on-dark::after{background:rgba(255,255,255,.1);}
+
+  /* SVG EXPLAINER */
+  .svg-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .svg-card{border-radius:20px;padding:32px;}
+  .svg-card.pixel{background:var(--light);border:2px solid #ddd;}
+  .svg-card.vector{background:var(--indigo);}
+  .svg-card .sc-ico{font-size:2.8rem;margin-bottom:12px;}
+  .svg-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:10px;}
+  .pixel h3{color:var(--dark);}
+  .vector h3{color:#fff;}
+  .svg-card p{font-size:.86rem;line-height:1.7;}
+  .pixel p{color:var(--mid);}
+  .vector p{color:rgba(255,255,255,.75);}
+  .sc-tag{display:inline-block;margin-top:12px;font-size:.76rem;font-weight:600;padding:4px 11px;border-radius:20px;}
+  .pixel .sc-tag{background:#fde;color:#c00;}
+  .vector .sc-tag{background:rgba(255,255,255,.15);color:#fff;}
+
+  /* COMPARE TABLE */
+  .compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;}
+  .compare-table thead th{padding:14px 18px;font-size:.8rem;font-weight:600;text-align:left;}
+  .compare-table thead th:first-child{background:rgba(255,255,255,.05);color:rgba(255,255,255,.45);}
+  .compare-table thead th:nth-child(2){background:#1a2fa0;color:#fff;}
+  .compare-table thead th:nth-child(3){background:var(--orange);color:#fff;}
+  .compare-table tbody tr{border-bottom:1px solid rgba(255,255,255,.06);}
+  .compare-table tbody td{padding:13px 18px;font-size:.84rem;}
+  .compare-table tbody td:first-child{color:rgba(255,255,255,.45);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;background:rgba(255,255,255,.03);}
+  .compare-table tbody td:nth-child(2){color:rgba(255,255,255,.8);background:rgba(26,47,160,.08);}
+  .compare-table tbody td:nth-child(3){color:rgba(255,255,255,.8);background:rgba(232,119,34,.07);}
+
+  /* CANVA ACTIVITY */
+  .canva-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .task-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 26px rgba(0,0,0,.07);}
+  .task-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--indigo);margin-bottom:16px;}
+  .req-item{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-bottom:1px solid var(--indigo-lt);}
+  .req-item:last-child{border-bottom:none;}
+  .ri-check{width:21px;height:21px;border-radius:5px;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;margin-top:1px;}
+  .ri-text{font-size:.85rem;color:var(--mid);line-height:1.5;}
+  .tips-list{display:flex;flex-direction:column;gap:12px;}
+  .tip-row{display:flex;gap:11px;align-items:flex-start;}
+  .tip-num{width:24px;height:24px;border-radius:50%;background:var(--orange-lt);color:var(--orange);font-size:.76rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .tip-body h5{font-size:.84rem;font-weight:600;color:var(--dark);margin-bottom:3px;}
+  .tip-body p{font-size:.8rem;color:var(--mid);line-height:1.5;}
+
+  /* WORKFLOW */
+  .workflow{display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding-bottom:8px;}
+  .wf-step{display:flex;flex-direction:column;align-items:center;min-width:150px;}
+  .wf-arrow{font-size:1.3rem;color:rgba(255,255,255,.2);padding:36px 8px 0;flex-shrink:0;}
+  .wf-ico{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:10px;flex-shrink:0;}
+  .wf-step:nth-child(1) .wf-ico{background:var(--indigo-lt);}
+  .wf-step:nth-child(3) .wf-ico{background:var(--teal-lt);}
+  .wf-step:nth-child(5) .wf-ico{background:var(--orange-lt);}
+  .wf-step:nth-child(7) .wf-ico{background:var(--light);border:2px solid rgba(255,255,255,.2);}
+  .wf-step:nth-child(9) .wf-ico{background:#e8ffe8;}
+  .wf-lbl{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.85);text-align:center;margin-bottom:4px;}
+  .wf-sub{font-size:.72rem;color:rgba(255,255,255,.45);text-align:center;line-height:1.4;}
+
+  /* REFLECTION */
+  .celebrate{background:linear-gradient(135deg,var(--teal),var(--teal-dk));border-radius:24px;padding:44px 52px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .cel-left h2{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:12px;}
+  .cel-left p{color:rgba(255,255,255,.78);font-size:.92rem;line-height:1.7;}
+  .reflect-qs{display:flex;flex-direction:column;gap:12px;}
+  .rq{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:16px 20px;}
+  .rq-label{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:5px;}
+  .rq-text{color:#fff;font-size:.86rem;line-height:1.55;}
+
+  /* COMPLETE */
+  .complete{background:var(--orange);padding:36px 80px;text-align:center;}
+  .complete h2{font-family:'Playfair Display',serif;font-size:2.6rem;color:#fff;margin-bottom:10px;}
+  .complete p{color:rgba(255,255,255,.85);font-size:.96rem;max-width:580px;margin:0 auto;line-height:1.65;}
+  .complete-pills{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
+  .cp{background:rgba(255,255,255,.18);color:#fff;font-size:.82rem;font-weight:600;padding:7px 18px;border-radius:20px;border:1px solid rgba(255,255,255,.28);}
+
+  footer{background:var(--dark);padding:22px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer span{color:rgba(255,255,255,.35);font-size:.78rem;}
+  .foot-nav{display:flex;gap:12px;}
+  .foot-nav a{color:rgba(255,255,255,.55);font-size:.82rem;text-decoration:none;padding:7px 18px;border:1px solid rgba(255,255,255,.15);border-radius:20px;transition:all .2s;}
+  .foot-nav a:hover{background:#fff;color:var(--dark);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .hero>*{animation:fadeUp .55s ease both;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🧵 Grade 6 Sewing</div>
+  <div class="nav-pills">
+    <a href="index.html">Home</a>
+    <a href="week1.html">Week 1</a>
+    <a href="week2.html">Week 2</a>
+    <a href="week3.html">Week 3</a>
+    <a href="week4.html">Week 4</a>
+    <a href="week5.html">Week 5</a>
+    <a href="week6.html" class="active">Week 6</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="floating-icons">
+    <div class="fi">🎨<div class="fil">Canva</div></div>
+    <div class="fi">✂️<div class="fil">Cricut</div></div>
+    <div class="fi">🖨️<div class="fil">Print</div></div>
+  </div>
+  <div class="week-label">Week Six — Final Week!</div>
+  <h1>Digital Design:<br>Canva + Cricut</h1>
+  <p>Create an SVG design in Canva, learn how the Cricut machine works, and discover the difference between sublimation and heat-transfer vinyl printing.</p>
+  <div class="hero-badges">
+    <div class="hb hi">📁 Design File Due Today</div>
+    <div class="hb">📓 Unit Reflection Due</div>
+    <div class="hb">🎉 Final Week!</div>
+  </div>
+</section>
+
+<!-- SVG -->
+<section class="section">
+  <div class="sec-title indigo">What is an SVG?</div>
+  <div class="svg-grid">
+    <div class="svg-card pixel">
+      <div class="sc-ico">🖼️</div>
+      <h3>Regular Image (JPG/PNG)</h3>
+      <p>Made up of tiny coloured squares called <strong>pixels</strong>. When you zoom in, it gets blurry because you're stretching those squares. Think of it like a mosaic — up close you see all the tiles.</p>
+      <p style="margin-top:10px;">Fine for photos and social media. Not ideal for cutting machines.</p>
+      <div class="sc-tag">⚠️ Gets blurry when enlarged</div>
+    </div>
+    <div class="svg-card vector">
+      <div class="sc-ico">📐</div>
+      <h3>SVG — Vector Graphic</h3>
+      <p>Made of mathematical <strong>paths and shapes</strong> — not pixels. When you scale it up, the computer just recalculates the paths, so it stays perfectly sharp at any size. It's like drawing with geometry!</p>
+      <p style="color:rgba(255,255,255,.65);margin-top:10px;">Perfect for Cricut — the machine follows the paths to cut exact outlines.</p>
+      <div class="sc-tag">✓ Always crisp at any size</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="section dk">
+  <div class="sec-title on-dark">Sublimation vs Heat-Transfer Vinyl (HTV)</div>
+  <p style="color:rgba(255,255,255,.55);margin-bottom:22px;font-size:.9rem;">Two common ways to add designs to fabric using heat — each works differently and gives different results:</p>
+  <table class="compare-table">
+    <thead><tr><th></th><th>🖨️ Sublimation Printing</th><th>✂️ Heat-Transfer Vinyl (HTV)</th></tr></thead>
+    <tbody>
+      <tr><td>How It Works</td><td>Special ink turns into a gas and bonds permanently into fabric fibres</td><td>Vinyl is cut by the Cricut, then pressed onto the fabric with heat</td></tr>
+      <tr><td>Feel on Fabric</td><td>No texture — it becomes part of the fabric itself</td><td>Slightly raised and smooth — you can feel the edge</td></tr>
+      <tr><td>Best Fabric</td><td>White or light polyester only</td><td>Any colour, most fabric types work</td></tr>
+      <tr><td>Colours</td><td>Full-colour photos and gradients possible</td><td>One solid colour per layer of vinyl</td></tr>
+      <tr><td>Durability</td><td>Very durable — won't crack or peel</td><td>Durable if applied at the right temperature</td></tr>
+      <tr><td>Cricut's Role</td><td>Cricut not always needed — heat press applies the printed design</td><td>Cricut cuts the vinyl shape; heat press irons it onto fabric</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CANVA CHALLENGE -->
+<section class="section alt">
+  <div class="sec-title">Your Design Challenge</div>
+  <div class="canva-grid">
+    <div class="task-card">
+      <h3>Your Design Must Include</h3>
+      <div class="req-item"><div class="ri-check">✓</div><div class="ri-text"><strong>At least one shape or icon</strong> from Canva's Elements panel — stars, arrows, leaves, anything you like</div></div>
+      <div class="req-item"><div class="ri-check">✓</div><div class="ri-text"><strong>Text</strong> — your name, a word, a short phrase, or a quote</div></div>
+      <div class="req-item"><div class="ri-check">✓</div><div class="ri-text"><strong>At least two colours</strong> — think about contrast and how it will look on a bag or T-shirt</div></div>
+      <div class="req-item"><div class="ri-check">✓</div><div class="ri-text"><strong>Bold, simple design</strong> — thin lines and tiny details don't cut well on the Cricut</div></div>
+      <div class="req-item"><div class="ri-check">✓</div><div class="ri-text"><strong>File saved as:</strong> <em>YourName_Cricut_Design</em> in SVG or PNG format</div></div>
+    </div>
+    <div class="task-card">
+      <h3>Canva Tips for Cricut Designs</h3>
+      <div class="tips-list">
+        <div class="tip-row"><div class="tip-num">1</div><div class="tip-body"><h5>Use the Elements Tab</h5><p>Search for shapes, icons, and graphics. Use vector-style flat elements, not photographs.</p></div></div>
+        <div class="tip-row"><div class="tip-num">2</div><div class="tip-body"><h5>Think Bold &amp; Simple</h5><p>Imagine your design cut out of vinyl. Fine lines will tear. Stick to shapes at least ¼ inch wide.</p></div></div>
+        <div class="tip-row"><div class="tip-num">3</div><div class="tip-body"><h5>Avoid Photo Backgrounds</h5><p>The Cricut can't "cut" pixels. Use Canva's flat graphic elements instead of JPG images.</p></div></div>
+        <div class="tip-row"><div class="tip-num">4</div><div class="tip-body"><h5>Export Correctly</h5><p>Share → Download → SVG (Canva Pro) or PNG. Name the file exactly as instructed.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="section dk">
+  <div class="sec-title on-dark">Design to Fabric — The Full Workflow</div>
+  <div class="workflow">
+    <div class="wf-step"><div class="wf-ico">🎨</div><div class="wf-lbl">Create in Canva</div><div class="wf-sub">Design with shapes &amp; text</div></div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step"><div class="wf-ico">💾</div><div class="wf-lbl">Export as SVG</div><div class="wf-sub">Download from Canva</div></div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step"><div class="wf-ico">📲</div><div class="wf-lbl">Import to Cricut</div><div class="wf-sub">Upload to Design Space</div></div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step"><div class="wf-ico">✂️</div><div class="wf-lbl">Cricut Cuts</div><div class="wf-sub">Machine cuts the vinyl</div></div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step"><div class="wf-ico">🔥</div><div class="wf-lbl">Heat Press</div><div class="wf-sub">Design bonds to fabric</div></div>
+  </div>
+</section>
+
+<!-- REFLECTION & CELEBRATION -->
+<section class="section">
+  <div class="celebrate">
+    <div class="cel-left">
+      <h2>Reflect &amp; Celebrate</h2>
+      <p>Write your final journal entry — 3 to 5 sentences. Look back at everything you've learned and made over six weeks. Think about where you started and where you are now. Then we celebrate as a class! 🎉</p>
+    </div>
+    <div class="reflect-qs">
+      <div class="rq"><div class="rq-label">Prompt 1</div><div class="rq-text">What is one skill you are most proud of from this unit? Why?</div></div>
+      <div class="rq"><div class="rq-label">Prompt 2</div><div class="rq-text">What was the hardest part, and how did you work through it?</div></div>
+      <div class="rq"><div class="rq-label">Prompt 3</div><div class="rq-text">How might sewing, design, or textiles connect to a future career or hobby for you?</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="complete">
+  <h2>🎉 Unit Complete!</h2>
+  <p>You've learned to thread a machine, sew straight seams, build a real bag, hand-sew a button, care for your fabrics, and design for a Cricut. That is a lot. Be proud of what you've made.</p>
+  <div class="complete-pills">
+    <div class="cp">✓ Fabric Bookmark</div>
+    <div class="cp">✓ Cinch Sac Book Bag</div>
+    <div class="cp">✓ Canva SVG Design</div>
+    <div class="cp">✓ Laundry &amp; Fabric Knowledge</div>
+    <div class="cp">✓ Machine Safety</div>
+  </div>
+</div>
+
+<footer>
+  <span>Grade 6 Family Studies · Six-Week Sewing Unit</span>
+  <div class="foot-nav">
+    <a href="week5.html">← Week 5</a>
+    <a href="index.html">↺ Home</a>
+  </div>
+</footer>
+</body>
+</html>

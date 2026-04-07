@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 6 Sewing — Stitching Skills for Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1A7A7A;
+    --teal-dk:    #0f5a5a;
+    --teal-lt:    #D6F0F0;
+    --orange:     #E87722;
+    --orange-lt:  #FDE8D5;
+    --cream:      #FDFAF5;
+    --dark:       #141414;
+    --mid:        #4a4a4a;
+    --light:      #f0ece4;
+    --rule:       rgba(0,0,0,0.08);
+    /* week accent colours */
+    --w1: #1A7A7A;
+    --w2: #C4591A;
+    --w3: #2E7D5E;
+    --w4: #5B3FA0;
+    --w5: #B5354A;
+    --w6: #2D3580;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: 60px;
+    background: rgba(15,90,90,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    color: #fff; font-size: 1rem; letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .brand-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--orange);
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.5); opacity: 0.65; }
+  }
+  .nav-links { display: flex; gap: 6px; }
+  .nav-links a {
+    font-size: 0.73rem; font-weight: 500;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    padding: 6px 13px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.14);
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .nav-cta {
+    background: var(--orange); color: #fff;
+    font-size: 0.8rem; font-weight: 600;
+    text-decoration: none; padding: 8px 20px;
+    border-radius: 20px; transition: all 0.2s;
+  }
+  .nav-cta:hover { background: #d06818; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 60px);
+    background: var(--teal-dk);
+    display: grid; grid-template-rows: 1fr auto;
+    position: relative; overflow: hidden;
+  }
+  /* animated thread lines */
+  .threads { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .thread {
+    position: absolute; width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+    animation: drift linear infinite;
+  }
+  .thread:nth-child(1){left:7%;  height:55%; animation-duration:13s; animation-delay:0s;}
+  .thread:nth-child(2){left:17%; height:40%; animation-duration:19s; animation-delay:-5s;}
+  .thread:nth-child(3){left:28%; height:68%; animation-duration:11s; animation-delay:-2s;}
+  .thread:nth-child(4){left:41%; height:50%; animation-duration:21s; animation-delay:-9s;}
+  .thread:nth-child(5){left:54%; height:63%; animation-duration:15s; animation-delay:-1s;}
+  .thread:nth-child(6){left:66%; height:44%; animation-duration:12s; animation-delay:-6s;}
+  .thread:nth-child(7){left:77%; height:58%; animation-duration:17s; animation-delay:-3s;}
+  .thread:nth-child(8){left:88%; height:72%; animation-duration:23s; animation-delay:-8s;}
+  @keyframes drift {
+    0%   { top: -80%; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { top: 120%; opacity: 0; }
+  }
+  /* big decorative letter */
+  .hero-deco {
+    position: absolute; right: -20px; bottom: -60px;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 38vw; line-height: 1;
+    color: rgba(255,255,255,0.025);
+    pointer-events: none; user-select: none;
+  }
+
+  .hero-inner {
+    display: flex; flex-direction: column;
+    justify-content: center; padding: 80px 96px;
+    position: relative; z-index: 1;
+  }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before { content:''; display:block; width:36px; height:1px; background:var(--orange); }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 6.5vw, 6rem);
+    line-height: 1.0; color: #fff;
+    margin-bottom: 28px; max-width: 14ch;
+  }
+  .hero-title em { font-style: italic; color: var(--teal-lt); }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem; line-height: 1.75;
+    max-width: 460px; margin-bottom: 44px;
+  }
+
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 48px; }
+  .tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.13);
+    color: rgba(255,255,255,0.78);
+    font-size: 0.78rem; font-weight: 500;
+    padding: 7px 15px; border-radius: 20px;
+  }
+  .tag.accent {
+    background: rgba(232,119,34,0.18);
+    border-color: rgba(232,119,34,0.35);
+    color: #fbbf7a;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #fff; color: var(--teal-dk);
+    font-weight: 700; font-size: 0.95rem;
+    padding: 16px 30px; border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    transition: all 0.3s; width: fit-content;
+  }
+  .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); background: var(--teal-lt); }
+  .cta-arrow {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--teal-dk); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; transition: transform 0.3s;
+  }
+  .hero-cta:hover .cta-arrow { transform: translateX(4px); }
+
+  /* stats bar at bottom of hero */
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative; z-index: 1;
+  }
+  .hs { padding: 26px 40px; border-right: 1px solid rgba(255,255,255,0.07); }
+  .hs:last-child { border-right: none; }
+  .hs-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #fff; line-height: 1; margin-bottom: 5px; }
+  .hs-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ── PROJECTS ── */
+  .projects-section { padding: 88px 96px; }
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 14px;
+  }
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; color: var(--dark); line-height: 1.15; margin-bottom: 48px;
+  }
+  .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .proj-card {
+    background: #fff; border-radius: 22px; padding: 36px 30px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+    border-top: 5px solid; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column; gap: 0;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .proj-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(0,0,0,0.12); }
+  .proj-card.p1 { border-color: var(--teal); }
+  .proj-card.p2 { border-color: var(--orange); }
+  .proj-card.p3 { border-color: var(--w6); }
+  .pc-icon { font-size: 2.6rem; margin-bottom: 18px; }
+  .pc-week { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
+  .p1 .pc-week { color: var(--teal); }
+  .p2 .pc-week { color: var(--orange); }
+  .p3 .pc-week { color: var(--w6); }
+  .pc-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: 10px; }
+  .pc-desc { font-size: 0.86rem; color: var(--mid); line-height: 1.65; flex: 1; }
+  .pc-footer {
+    margin-top: 22px; padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pc-grade { font-size: 0.75rem; font-weight: 700; }
+  .p1 .pc-grade { color: var(--teal); }
+  .p2 .pc-grade { color: var(--orange); }
+  .p3 .pc-grade { color: var(--w6); }
+  .pc-arrow { font-size: 1rem; color: rgba(0,0,0,0.2); transition: all 0.2s; }
+  .proj-card:hover .pc-arrow { color: var(--dark); transform: translateX(4px); }
+
+  /* ── WEEK CARDS ── */
+  .weeks-section { background: var(--dark); padding: 88px 96px; position: relative; overflow: hidden; }
+  .weeks-section::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,122,122,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .weeks-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 44px; }
+  .weeks-header .section-heading { color: #fff; margin-bottom: 0; }
+  .weeks-header .section-eyebrow { color: var(--teal-lt); }
+  .weeks-note { font-size: 0.83rem; color: rgba(255,255,255,0.35); text-align: right; line-height: 1.6; max-width: 220px; }
+
+  .weeks-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .week-card {
+    border-radius: 22px; padding: 32px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    text-decoration: none; color: #fff;
+    display: flex; flex-direction: column;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .week-card::before {
+    content: ''; position: absolute; inset: 0;
+    opacity: 0; transition: opacity 0.3s; border-radius: 22px;
+  }
+  .week-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.16); }
+  .week-card:hover::before { opacity: 1; }
+
+  .wc-w1::before { background: linear-gradient(135deg, rgba(26,122,122,0.22), transparent); }
+  .wc-w2::before { background: linear-gradient(135deg, rgba(196,89,26,0.22), transparent); }
+  .wc-w3::before { background: linear-gradient(135deg, rgba(46,125,94,0.22), transparent); }
+  .wc-w4::before { background: linear-gradient(135deg, rgba(91,63,160,0.22), transparent); }
+  .wc-w5::before { background: linear-gradient(135deg, rgba(181,53,74,0.22), transparent); }
+  .wc-w6::before { background: linear-gradient(135deg, rgba(45,53,128,0.22), transparent); }
+
+  .wc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; position: relative; z-index: 1; }
+  .wc-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    padding: 5px 11px; border-radius: 20px; font-weight: 500;
+  }
+  .wc-w1 .wc-num { background: rgba(26,122,122,0.3);  color: #7dd8d8; }
+  .wc-w2 .wc-num { background: rgba(196,89,26,0.3);   color: #f0a870; }
+  .wc-w3 .wc-num { background: rgba(46,125,94,0.3);   color: #7dcca8; }
+  .wc-w4 .wc-num { background: rgba(91,63,160,0.3);   color: #b09ee0; }
+  .wc-w5 .wc-num { background: rgba(181,53,74,0.3);   color: #e8909e; }
+  .wc-w6 .wc-num { background: rgba(45,53,128,0.3);   color: #9098e0; }
+  .wc-icon { font-size: 1.5rem; }
+
+  .wc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; line-height: 1.2;
+    margin-bottom: 8px; position: relative; z-index: 1;
+  }
+  .wc-tagline {
+    font-size: 0.75rem; color: rgba(255,255,255,0.4);
+    margin-bottom: 20px; letter-spacing: 0.04em;
+    position: relative; z-index: 1;
+  }
+  .wc-topics { display: flex; flex-direction: column; gap: 7px; flex: 1; position: relative; z-index: 1; }
+  .wc-topic {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.81rem; color: rgba(255,255,255,0.58);
+  }
+  .wc-topic::before { content:''; width:4px; height:4px; border-radius:50%; flex-shrink:0; }
+  .wc-w1 .wc-topic::before { background: #7dd8d8; }
+  .wc-w2 .wc-topic::before { background: #f0a870; }
+  .wc-w3 .wc-topic::before { background: #7dcca8; }
+  .wc-w4 .wc-topic::before { background: #b09ee0; }
+  .wc-w5 .wc-topic::before { background: #e8909e; }
+  .wc-w6 .wc-topic::before { background: #9098e0; }
+
+  .wc-footer {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 16px; margin-top: 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 1;
+  }
+  .wc-project { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .wc-arrow {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.14);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; color: rgba(255,255,255,0.4);
+    transition: all 0.25s;
+  }
+  .week-card:hover .wc-arrow { background: #fff; color: var(--dark); border-color: #fff; transform: translateX(3px); }
+
+  /* ── WHAT YOU'LL LEARN ── */
+  .learn-section { padding: 88px 96px; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .learn-list { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+  .learn-row {
+    display: grid; grid-template-columns: 40px 1fr; gap: 14px;
+    align-items: start; padding: 16px 0; border-bottom: 1px solid var(--rule);
+  }
+  .learn-row:last-child { border-bottom: none; }
+  .lr-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--teal-lt);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .lr-text { font-size: 0.88rem; color: var(--mid); line-height: 1.6; padding-top: 9px; }
+  .lr-text strong { color: var(--dark); }
+
+  /* assessment table */
+  .assess-table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 2px 22px rgba(0,0,0,0.08);
+  }
+  .assess-table thead th {
+    background: var(--teal-dk); color: #fff;
+    font-size: 0.73rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 15px 18px; text-align: left;
+  }
+  .assess-table tbody tr { transition: background 0.15s; }
+  .assess-table tbody tr:hover { background: var(--teal-lt); }
+  .assess-table tbody td {
+    padding: 15px 18px; font-size: 0.86rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    background: #fff; color: var(--mid);
+  }
+  .assess-table tbody td:first-child { color: var(--dark); font-weight: 500; }
+  .assess-table tbody tr:last-child td { border-bottom: none; }
+  .weight { display: inline-block; background: var(--orange); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; }
+
+  /* ── SUPPLIES ── */
+  .supplies-section { background: var(--teal); padding: 64px 96px; position: relative; overflow: hidden; }
+  .supplies-section::after { content: '🧵'; position: absolute; right: 72px; top: 50%; transform: translateY(-50%); font-size: 130px; opacity: 0.08; pointer-events: none; }
+  .supplies-inner { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: center; }
+  .sup-left h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: #fff; margin-bottom: 10px; }
+  .sup-left p { color: rgba(255,255,255,0.62); font-size: 0.88rem; line-height: 1.65; }
+  .supply-chips { display: flex; flex-wrap: wrap; gap: 9px; }
+  .sc {
+    background: rgba(255,255,255,0.11); border: 1px solid rgba(255,255,255,0.17);
+    color: #fff; font-size: 0.81rem;
+    padding: 8px 15px; border-radius: 20px;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); padding: 52px 96px 36px;
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: #fff; margin-bottom: 8px; }
+  .footer-brand em { font-style: italic; color: var(--teal-lt); }
+  .footer-sub { font-size: 0.8rem; color: rgba(255,255,255,0.3); line-height: 1.6; }
+  .footer-links { display: flex; flex-direction: column; gap: 7px; align-items: flex-end; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom {
+    grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 22px; font-size: 0.73rem; color: rgba(255,255,255,0.18);
+    display: flex; justify-content: space-between;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  .hero-inner > * { animation: fadeUp 0.6s ease both; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+  .hero-stats { animation: fadeUp 0.6s 0.55s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="brand-dot"></div>
+    Grade 6 Sewing
+  </a>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#weeks">Weeks</a>
+    <a href="#learn">Outcomes</a>
+    <a href="#supplies">Supplies</a>
+  </div>
+  <a href="week1.html" class="nav-cta">Start Week 1 →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="threads">
+    <div class="thread"></div><div class="thread"></div><div class="thread"></div>
+    <div class="thread"></div><div class="thread"></div><div class="thread"></div>
+    <div class="thread"></div><div class="thread"></div>
+  </div>
+  <div class="hero-deco">S</div>
+
+  <div class="hero-inner">
+    <div class="eyebrow">Grade 6 · Family Studies · Six-Week Unit</div>
+    <h1 class="hero-title">Stitching <em>Skills</em> for Life</h1>
+    <p class="hero-sub">From threading a needle to designing with Canva and Cricut — discover the craft, technology, and careers that connect the world of sewing.</p>
+    <div class="hero-tags">
+      <div class="tag accent">🔖 Fabric Bookmark</div>
+      <div class="tag accent">🎒 Cinch Sac Book Bag</div>
+      <div class="tag accent">🎨 Canva + Cricut Design</div>
+      <div class="tag">Machine Sewing</div>
+      <div class="tag">Hand Sewing</div>
+      <div class="tag">Fabric &amp; Laundry</div>
+      <div class="tag">Textile Careers</div>
+    </div>
+    <a href="week1.html" class="hero-cta">
+      Begin Week 1
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-num">6</div><div class="hs-lbl">Weeks of Learning</div></div>
+    <div class="hs"><div class="hs-num">2</div><div class="hs-lbl">Sewn Projects</div></div>
+    <div class="hs"><div class="hs-num">1</div><div class="hs-lbl">Digital Design</div></div>
+    <div class="hs"><div class="hs-num">12+</div><div class="hs-lbl">Careers Explored</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="section-eyebrow">Your Projects</div>
+  <div class="section-heading">Three Things You'll Make</div>
+  <div class="projects-grid">
+
+    <a href="week2.html" class="proj-card p1">
+      <div class="pc-icon">🔖</div>
+      <div class="pc-week">Project 1 — Week 2</div>
+      <div class="pc-title">Fabric Bookmark with Button</div>
+      <div class="pc-desc">Your first machine-sewn project. You'll thread the machine, sew straight seams, clip corners, turn and press your bookmark, then hand-sew a button with a proper shank.</div>
+      <div class="pc-footer">
+        <div class="pc-grade">20% of your grade</div>
+        <div class="pc-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="week3.html" class="proj-card p2">
+      <div class="pc-icon">🎒</div>
+      <div class="pc-week">Project 2 — Weeks 3–5</div>
+      <div class="pc-title">Cinch Sac Drawstring Book Bag</div>
+      <div class="pc-desc">A real, functional bag you design, measure, cut, and sew yourself. You'll choose your fabric, build the bag body, attach a drawstring casing, and thread the cord so it opens and closes.</div>
+      <div class="pc-footer">
+        <div class="pc-grade">40% of your grade</div>
+        <div class="pc-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="week6.html" class="proj-card p3">
+      <div class="pc-icon">🎨</div>
+      <div class="pc-week">Project 3 — Week 6</div>
+      <div class="pc-title">Canva SVG Design File</div>
+      <div class="pc-desc">Create a bold, original graphic in Canva that could be cut on a Cricut machine. You'll learn the difference between SVGs and regular images, and between sublimation and heat-transfer vinyl.</div>
+      <div class="pc-footer">
+        <div class="pc-grade">20% of your grade</div>
+        <div class="pc-arrow">→</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- WEEK CARDS -->
+<section class="weeks-section" id="weeks">
+  <div class="weeks-header">
+    <div>
+      <div class="section-eyebrow">Week by Week</div>
+      <div class="section-heading">Six Weeks of Making</div>
+    </div>
+    <div class="weeks-note">Click any week card to open that page and see all the reference material for that class.</div>
+  </div>
+
+  <div class="weeks-grid">
+
+    <a href="week1.html" class="week-card wc-w1">
+      <div class="wc-header">
+        <div class="wc-num">WEEK 01</div>
+        <div class="wc-icon">🧵</div>
+      </div>
+      <div class="wc-title">Welcome to Sewing!</div>
+      <div class="wc-tagline">Careers, Machine Parts &amp; Fabrics</div>
+      <div class="wc-topics">
+        <div class="wc-topic">12 sewing careers across 3 categories</div>
+        <div class="wc-topic">10 machine parts to know</div>
+        <div class="wc-topic">8 fabric types explored</div>
+        <div class="wc-topic">Safety rules &amp; exit ticket</div>
+      </div>
+      <div class="wc-footer">
+        <div class="wc-project">Introduction Week</div>
+        <div class="wc-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="week2.html" class="week-card wc-w2">
+      <div class="wc-header">
+        <div class="wc-num">WEEK 02</div>
+        <div class="wc-icon">🔖</div>
+      </div>
+      <div class="wc-title">First Stitches: The Bookmark</div>
+      <div class="wc-tagline">Threading, Seams &amp; Hand Sewing</div>
+      <div class="wc-topics">
+        <div class="wc-topic">7-step threading guide</div>
+        <div class="wc-topic">5-step bookmark construction</div>
+        <div class="wc-topic">Safe ironing rules</div>
+        <div class="wc-topic">Hand-sewing a button in 4 steps</div>
+      </div>
+      <div class="wc-footer">
+        <div class="wc-project">Project 1 Due</div>
+        <div class="wc-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="week3.html" class="week-card wc-w3">
+      <div class="wc-header">
+        <div class="wc-num">WEEK 03</div>
+        <div class="wc-icon">📐</div>
+      </div>
+      <div class="wc-title">Cinch Sac — Plan &amp; Cut</div>
+      <div class="wc-tagline">Design, Measure &amp; Cut</div>
+      <div class="wc-topics">
+        <div class="wc-topic">Project overview &amp; cut sizes</div>
+        <div class="wc-topic">Fabric selector (3 options)</div>
+        <div class="wc-topic">4-step cutting guide</div>
+        <div class="wc-topic">Cutting safety rules</div>
+      </div>
+      <div class="wc-footer">
+        <div class="wc-project">Project 2 — Part 1</div>
+        <div class="wc-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="week4.html" class="week-card wc-w4">
+      <div class="wc-header">
+        <div class="wc-num">WEEK 04</div>
+        <div class="wc-icon">🪡</div>
+      </div>
+      <div class="wc-title">Cinch Sac — Sewing the Bag</div>
+      <div class="wc-tagline">Seams, Casing &amp; Pressing</div>
+      <div class="wc-topics">
+        <div class="wc-topic">Meet the seam ripper</div>
+        <div class="wc-topic">Bag body — 3 sewing steps</div>
+        <div class="wc-topic">Attaching the casing — 4 steps</div>
+        <div class="wc-topic">Iron guide &amp; troubleshooting</div>
+      </div>
+      <div class="wc-footer">
+        <div class="wc-project">Project 2 — Part 2</div>
+        <div class="wc-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="week5.html" class="week-card wc-w5">
+      <div class="wc-header">
+        <div class="wc-num">WEEK 05</div>
+        <div class="wc-icon">🎒</div>
+      </div>
+      <div class="wc-title">Cinch Sac — Finish &amp; Laundry</div>
+      <div class="wc-tagline">Cord Threading &amp; Fabric Care</div>
+      <div class="wc-topics">
+        <div class="wc-topic">Threading the cord — 4 steps</div>
+        <div class="wc-topic">Laundry care symbols guide</div>
+        <div class="wc-topic">Sorting basics + pro tips</div>
+        <div class="wc-topic">Self &amp; peer assessment</div>
+      </div>
+      <div class="wc-footer">
+        <div class="wc-project">Project 2 Due</div>
+        <div class="wc-arrow">→</div>
+      </div>
+    </a>
+
+    <a href="week6.html" class="week-card wc-w6">
+      <div class="wc-header">
+        <div class="wc-num">WEEK 06</div>
+        <div class="wc-icon">🎨</div>
+      </div>
+      <div class="wc-title">Digital Design: Canva + Cricut</div>
+      <div class="wc-tagline">SVG, Sublimation &amp; HTV</div>
+      <div class="wc-topics">
+        <div class="wc-topic">SVG vs PNG explained</div>
+        <div class="wc-topic">Sublimation vs heat-transfer vinyl</div>
+        <div class="wc-topic">Canva design challenge</div>
+        <div class="wc-topic">Design-to-fabric workflow</div>
+      </div>
+      <div class="wc-footer">
+        <div class="wc-project">Project 3 Due · Unit Ends</div>
+        <div class="wc-arrow">→</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN + ASSESSMENT -->
+<section class="learn-section" id="learn">
+  <div>
+    <div class="section-eyebrow">Learning Outcomes</div>
+    <div class="section-heading">What You'll Know &amp; Be Able to Do</div>
+    <div class="learn-list">
+      <div class="learn-row">
+        <div class="lr-icon">🧵</div>
+        <div class="lr-text"><strong>Machine Skills</strong> — Thread a sewing machine, wind a bobbin, sew straight seams and backstitch to lock them</div>
+      </div>
+      <div class="learn-row">
+        <div class="lr-icon">🪡</div>
+        <div class="lr-text"><strong>Hand Sewing</strong> — Sew on a button with a proper shank and knot off neatly at the back</div>
+      </div>
+      <div class="learn-row">
+        <div class="lr-icon">✂️</div>
+        <div class="lr-text"><strong>Cutting &amp; Measuring</strong> — Measure fabric accurately, mark with chalk, and cut safely using fabric scissors</div>
+      </div>
+      <div class="learn-row">
+        <div class="lr-icon">🌡️</div>
+        <div class="lr-text"><strong>Ironing &amp; Laundry</strong> — Press seams, read care label symbols, and sort and wash fabrics correctly</div>
+      </div>
+      <div class="learn-row">
+        <div class="lr-icon">🎨</div>
+        <div class="lr-text"><strong>Digital Design</strong> — Create an SVG in Canva and understand how Cricut machines use design files</div>
+      </div>
+      <div class="learn-row">
+        <div class="lr-icon">💼</div>
+        <div class="lr-text"><strong>Careers</strong> — Name and describe 12+ careers across fashion design, technical textiles, and creative specialties</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-eyebrow">Assessment</div>
+    <div class="section-heading">How You're Evaluated</div>
+    <table class="assess-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>When</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fabric Bookmark + Button</td>
+          <td>Week 2</td>
+          <td><span class="weight">20%</span></td>
+        </tr>
+        <tr>
+          <td>Cinch Sac Book Bag</td>
+          <td>Week 5</td>
+          <td><span class="weight">40%</span></td>
+        </tr>
+        <tr>
+          <td>Canva SVG Design File</td>
+          <td>Week 6</td>
+          <td><span class="weight">20%</span></td>
+        </tr>
+        <tr>
+          <td>Participation &amp; Safety</td>
+          <td>All weeks</td>
+          <td><span class="weight">10%</span></td>
+        </tr>
+        <tr>
+          <td>Reflection Journal</td>
+          <td>Weeks 1, 3 &amp; 6</td>
+          <td><span class="weight">10%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SUPPLIES -->
+<section class="supplies-section" id="supplies">
+  <div class="supplies-inner">
+    <div class="sup-left">
+      <h2>What You'll Need</h2>
+      <p>Most supplies are provided by the school. Bring your enthusiasm — that's the most important thing.</p>
+    </div>
+    <div class="supply-chips">
+      <div class="sc"><span>🧶</span> Cotton or canvas fabric</div>
+      <div class="sc"><span>🪡</span> Thread (all-purpose)</div>
+      <div class="sc"><span>✂️</span> Fabric scissors</div>
+      <div class="sc"><span>📏</span> Ruler</div>
+      <div class="sc"><span>🔘</span> Button (assorted)</div>
+      <div class="sc"><span>🪢</span> Hand-sewing needle</div>
+      <div class="sc"><span>📌</span> Pins + safety pin</div>
+      <div class="sc"><span>🖊️</span> Fabric chalk / marker</div>
+      <div class="sc"><span>💻</span> Chromebook (Week 6)</div>
+      <div class="sc"><span>📓</span> Reflection journal</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Grade 6 Sewing — <em>Stitching Skills for Life</em></div>
+    <div class="footer-sub">
+      Family Studies · Six-Week Unit · Once per week · 50 minutes per class<br>
+      Keep all 7 files in the same folder so page navigation works correctly.
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="week1.html">→ Week 1: Welcome to Sewing</a>
+    <a href="week2.html">→ Week 2: The Bookmark</a>
+    <a href="week3.html">→ Week 3: Plan &amp; Cut</a>
+    <a href="week4.html">→ Week 4: Sewing the Bag</a>
+    <a href="week5.html">→ Week 5: Finish &amp; Laundry</a>
+    <a href="week6.html">→ Week 6: Canva + Cricut</a>
+  </div>
+  <div class="footer-bottom">
+    <span>Grade 6 Family Studies — Sewing Unit</span>
+    <span>Hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+</body>
+</html>

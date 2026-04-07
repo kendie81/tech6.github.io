@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 5 – Cinch Sac: Finishing &amp; Laundry Basics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#1A7A7A;--teal-dk:#0f5a5a;--teal-lt:#D6F0F0;--orange:#E87722;--orange-lt:#FDE8D5;--rose:#B5354A;--rose-lt:#F9DDE1;--cream:#FDFAF5;--dark:#1a1a1a;--mid:#4a4a4a;--light:#f0ece4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
+
+  nav{background:var(--teal-dk);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .nav-logo{font-family:'Playfair Display',serif;color:#fff;font-size:1rem;}
+  .nav-pills{display:flex;gap:6px;flex-wrap:wrap;}
+  .nav-pills a{color:rgba(255,255,255,.6);font-size:.72rem;font-weight:600;text-decoration:none;padding:5px 11px;border-radius:20px;border:1px solid rgba(255,255,255,.2);transition:all .2s;}
+  .nav-pills a:hover{background:rgba(255,255,255,.15);color:#fff;}
+  .nav-pills a.active{background:var(--rose);color:#fff;border-color:var(--rose);}
+
+  .hero{background:linear-gradient(135deg,#6b1527,var(--rose));padding:64px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;position:relative;overflow:hidden;}
+  .hero::before{content:'🎒';position:absolute;right:80px;bottom:-10px;font-size:160px;opacity:.1;}
+  .week-label{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;color:#fff;line-height:1.05;margin-bottom:14px;}
+  .hero p{color:rgba(255,255,255,.8);font-size:1rem;line-height:1.65;max-width:400px;}
+  .hero-checklist{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:22px 26px;color:#fff;min-width:210px;position:relative;z-index:1;}
+  .hero-checklist h4{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:12px;}
+  .hc-item{display:flex;align-items:center;gap:10px;padding:5px 0;font-size:.84rem;}
+  .hc-dot{width:17px;height:17px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.35);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .hc-item.done .hc-dot{background:var(--orange);border-color:var(--orange);font-size:.6rem;color:#fff;}
+
+  .section{padding:56px 80px;}
+  .section.alt{background:var(--light);}
+  .section.dk{background:var(--teal-dk);}
+  .sec-title{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--teal);margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+  .sec-title::after{content:'';flex:1;height:2px;background:var(--teal-lt);}
+  .sec-title.rose{color:var(--rose);}
+  .sec-title.rose::after{background:var(--rose-lt);}
+  .sec-title.on-dark{color:#fff;}
+  .sec-title.on-dark::after{background:rgba(255,255,255,.12);}
+
+  /* CORD STEPS */
+  .cord-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .cord-card{background:#fff;border-radius:18px;padding:26px 20px;box-shadow:0 2px 14px rgba(0,0,0,.06);text-align:center;}
+  .cc-num{font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--rose-lt);line-height:1;margin-bottom:8px;}
+  .cord-card h4{font-size:.85rem;font-weight:600;color:var(--rose);margin-bottom:8px;}
+  .cord-card p{font-size:.82rem;color:var(--mid);line-height:1.6;}
+  .cord-tip{margin-top:24px;background:var(--orange);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:14px;color:#fff;}
+  .cord-tip .ico{font-size:1.6rem;flex-shrink:0;}
+  .cord-tip p{font-size:.86rem;line-height:1.55;}
+
+  /* LAUNDRY SYMBOLS */
+  .symbol-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  .sym-card{background:#fff;border-radius:16px;padding:22px 14px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05);}
+  .sym-ico{font-size:2.2rem;margin-bottom:8px;}
+  .sym-name{font-size:.84rem;font-weight:600;color:var(--dark);margin-bottom:6px;}
+  .sym-desc{font-size:.77rem;color:var(--mid);line-height:1.5;}
+  .sym-ex{margin-top:8px;font-size:.7rem;color:var(--teal);font-weight:500;}
+
+  /* SORTING */
+  .sort-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .sort-card{border-radius:18px;padding:28px;}
+  .sort-card.colours{background:var(--light);border-left:5px solid var(--teal);}
+  .sort-card.weight{background:var(--light);border-left:5px solid var(--orange);}
+  .sort-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:14px;}
+  .colours h3{color:var(--teal);}
+  .weight h3{color:var(--orange);}
+  .sort-piles{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+  .pile{border-radius:10px;padding:8px 14px;font-size:.8rem;font-weight:600;}
+  .sort-card p{font-size:.85rem;color:var(--mid);line-height:1.65;}
+  .pro-tips{margin-top:24px;background:#fff;border-radius:14px;padding:22px 26px;box-shadow:0 2px 10px rgba(0,0,0,.05);}
+  .pro-tips h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--teal);margin-bottom:12px;}
+  .tips-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tip-chip{background:var(--teal-lt);border-radius:8px;padding:6px 12px;font-size:.8rem;color:var(--teal-dk);}
+
+  /* ASSESS */
+  .assess-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .assess-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px;}
+  .assess-box h3{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:14px;}
+  .rr{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+  .rr:last-child{border-bottom:none;}
+  .rr-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:3px;}
+  .rr-text{font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.5;}
+  .peer-p{background:rgba(255,255,255,.06);border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+  .pp-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:5px;}
+  .pp-text{font-size:.84rem;color:#fff;line-height:1.5;}
+
+  /* GALLERY */
+  .gallery-card{background:var(--orange);border-radius:20px;padding:36px 44px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;}
+  .gallery-ico{font-size:4.5rem;}
+  .gallery-card h2{font-family:'Playfair Display',serif;color:#fff;font-size:1.8rem;margin-bottom:12px;}
+  .gallery-card>div:last-child p{color:rgba(255,255,255,.85);font-size:.92rem;line-height:1.65;margin-bottom:12px;}
+  .gl-note{background:rgba(255,255,255,.15);border-radius:10px;padding:12px 16px;font-size:.86rem;color:#fff;}
+
+  footer{background:var(--dark);padding:22px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer span{color:rgba(255,255,255,.35);font-size:.78rem;}
+  .foot-nav{display:flex;gap:12px;}
+  .foot-nav a{color:rgba(255,255,255,.55);font-size:.82rem;text-decoration:none;padding:7px 18px;border:1px solid rgba(255,255,255,.15);border-radius:20px;transition:all .2s;}
+  .foot-nav a:hover{background:#fff;color:var(--dark);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .hero>*{animation:fadeUp .55s ease both;}
+  .hero>*:nth-child(2){animation-delay:.12s;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🧵 Grade 6 Sewing</div>
+  <div class="nav-pills">
+    <a href="index.html">Home</a>
+    <a href="week1.html">Week 1</a>
+    <a href="week2.html">Week 2</a>
+    <a href="week3.html">Week 3</a>
+    <a href="week4.html">Week 4</a>
+    <a href="week5.html" class="active">Week 5</a>
+    <a href="week6.html">Week 6</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="week-label">Week Five</div>
+    <h1>Cinch Sac —<br>Finish &amp; Laundry</h1>
+    <p>Thread your drawstring cord, add the finishing touches, and learn how to take care of the things you sew.</p>
+  </div>
+  <div class="hero-checklist">
+    <h4>Bag Progress</h4>
+    <div class="hc-item done"><div class="hc-dot">✓</div>Fabric cut &amp; labelled</div>
+    <div class="hc-item done"><div class="hc-dot">✓</div>Bag body seams sewn</div>
+    <div class="hc-item done"><div class="hc-dot">✓</div>Casing attached</div>
+    <div class="hc-item"><div class="hc-dot"></div>Drawstring cord threaded</div>
+    <div class="hc-item"><div class="hc-dot"></div>Finishing touches done</div>
+  </div>
+</section>
+
+<!-- CORD THREADING -->
+<section class="section">
+  <div class="sec-title rose">Threading the Drawstring Cord — 4 Steps</div>
+  <div class="cord-grid">
+    <div class="cord-card"><div class="cc-num">01</div><h4>Attach a Safety Pin</h4><p>Clip a large safety pin to one end of your first drawstring cord. This is your "needle" — it guides the cord through the casing tunnel.</p></div>
+    <div class="cord-card"><div class="cc-num">02</div><h4>Thread Through</h4><p>Insert the safety pin into one casing opening and scrunch the fabric to push it all the way around the bag. Pull it back out the same side opening.</p></div>
+    <div class="cord-card"><div class="cc-num">03</div><h4>Repeat with Cord 2</h4><p>Thread the second cord through the <em>opposite</em> side opening. It travels all the way around and exits the same side. Both cords now form an X inside the casing.</p></div>
+    <div class="cord-card"><div class="cc-num">04</div><h4>Knot &amp; Test</h4><p>Tie a large double knot at both ends of each cord to stop them pulling through. Pull both cords to test that the bag opens and closes smoothly!</p></div>
+  </div>
+  <div class="cord-tip">
+    <div class="ico">💡</div>
+    <p><strong>Why two cords?</strong> Each cord pulls one side of the bag closed. When you pull both at once, the bag cinches tight. If the cord won't feed through, make sure the casing stitching didn't accidentally close the side openings.</p>
+  </div>
+</section>
+
+<!-- LAUNDRY SYMBOLS -->
+<section class="section alt">
+  <div class="sec-title">Laundry Symbols — What Do They Mean?</div>
+  <p style="margin-bottom:24px;color:var(--mid);font-size:.92rem;">Every piece of fabric has a care label. Always check it before washing anything new — it's the most important step!</p>
+  <div class="symbol-grid">
+    <div class="sym-card"><div class="sym-ico">🪣</div><div class="sym-name">Wash Tub</div><div class="sym-desc">Machine wash — the number inside = temperature in °C. A hand = hand wash only.</div><div class="sym-ex">30°C cool · 40°C warm · 60°C hot</div></div>
+    <div class="sym-card"><div class="sym-ico">🔺</div><div class="sym-name">Triangle</div><div class="sym-desc">Bleaching instructions. Empty = any bleach OK. Lines inside = non-chlorine only.</div><div class="sym-ex">X through it = no bleach at all</div></div>
+    <div class="sym-card"><div class="sym-ico">🔲</div><div class="sym-name">Square</div><div class="sym-desc">Drying instructions. Circle inside = tumble dry. Dots = heat level.</div><div class="sym-ex">1 dot = low · 2 dots = medium</div></div>
+    <div class="sym-card"><div class="sym-ico">🌡️</div><div class="sym-name">Iron</div><div class="sym-desc">Ironing temperature. Dots show how hot to set the iron.</div><div class="sym-ex">● = low · ●● = medium · ●●● = high</div></div>
+    <div class="sym-card"><div class="sym-ico">⭕</div><div class="sym-name">Circle</div><div class="sym-desc">Dry cleaning only. Letters inside tell the cleaner which solvents to use.</div><div class="sym-ex">X through circle = do not dry clean</div></div>
+  </div>
+</section>
+
+<!-- SORTING -->
+<section class="section">
+  <div class="sec-title">Sorting Your Laundry</div>
+  <div class="sort-grid">
+    <div class="sort-card colours">
+      <h3>Sort by Colour</h3>
+      <div class="sort-piles">
+        <div class="pile" style="background:#fff;border:1px solid #ddd;color:#333;">Whites</div>
+        <div class="pile" style="background:#e8e4dc;color:#555;">Lights</div>
+        <div class="pile" style="background:#555;color:#fff;">Darks</div>
+      </div>
+      <p>Darks can bleed dye onto lighter fabrics in a hot wash. Turn dark items inside-out before washing to protect the colour.</p>
+    </div>
+    <div class="sort-card weight">
+      <h3>Sort by Weight</h3>
+      <div class="sort-piles">
+        <div class="pile" style="background:var(--orange-lt);color:var(--orange);">Delicates</div>
+        <div class="pile" style="background:var(--teal-lt);color:var(--teal);">Regular</div>
+        <div class="pile" style="background:var(--light);color:var(--dark);">Heavy</div>
+      </div>
+      <p>Heavy items like denim can damage delicate fabrics. Delicates need a gentle cycle — ideally in a mesh laundry bag.</p>
+    </div>
+  </div>
+  <div class="pro-tips">
+    <h4>Before Every Wash — Quick Checklist</h4>
+    <div class="tips-row">
+      <div class="tip-chip">✓ Check all pockets</div>
+      <div class="tip-chip">✓ Zip all zippers</div>
+      <div class="tip-chip">✓ Turn dark items inside-out</div>
+      <div class="tip-chip">✓ Read the care label on new items</div>
+      <div class="tip-chip">✓ Treat stains before washing</div>
+      <div class="tip-chip">✓ Don't overload the machine</div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section class="section dk">
+  <div class="sec-title on-dark">Bag Assessment — 40% of Your Grade</div>
+  <div class="assess-grid">
+    <div class="assess-box">
+      <h3>Self-Assessment</h3>
+      <div class="rr"><div class="rr-label">Cutting Accuracy</div><div class="rr-text">My pieces were the right size and cut with even edges</div></div>
+      <div class="rr"><div class="rr-label">Bag Body Seams</div><div class="rr-text">Seams are straight, reinforced, and fully sewn</div></div>
+      <div class="rr"><div class="rr-label">Casing &amp; Cord</div><div class="rr-text">Casing attached evenly; cord threads smoothly and the bag opens and closes</div></div>
+      <div class="rr"><div class="rr-label">Pressing / Finish</div><div class="rr-text">All seams pressed; bag lays flat and looks tidy</div></div>
+      <div class="rr"><div class="rr-label">Overall Function</div><div class="rr-text">Bag opens, closes, and holds contents properly</div></div>
+    </div>
+    <div class="assess-box">
+      <h3>Peer Assessment</h3>
+      <p style="color:rgba(255,255,255,.55);font-size:.83rem;margin-bottom:14px;">Swap bags with a classmate and give honest, kind feedback:</p>
+      <div class="peer-p"><div class="pp-label">One Specific Compliment</div><div class="pp-text">Something genuinely well done — be specific, not just "it looks nice."</div></div>
+      <div class="peer-p"><div class="pp-label">One Specific Suggestion</div><div class="pp-text">Something that could be improved — say what and how, in a kind way.</div></div>
+      <div class="peer-p"><div class="pp-label">Overall Impression</div><div class="pp-text">Would this bag hold up with daily use? Why or why not?</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY WALK -->
+<section class="section">
+  <div class="gallery-card">
+    <div class="gallery-ico">🎨</div>
+    <div>
+      <h2>Gallery Walk — Celebrate!</h2>
+      <p>All bags are displayed on desks. Do a quick circuit of the room with a sticky note and leave one positive comment on a classmate's bag. Notice what everyone accomplished!</p>
+      <div class="gl-note">✏️ Your sticky note should include: one specific thing that looks great, and your name so they know who left the kind words.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Grade 6 Family Studies · Six-Week Sewing Unit</span>
+  <div class="foot-nav">
+    <a href="week4.html">← Week 4</a>
+    <a href="week6.html">Next: Week 6 →</a>
+  </div>
+</footer>
+</body>
+</html>

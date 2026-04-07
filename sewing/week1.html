@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 – Welcome to Sewing!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#1A7A7A;--teal-dk:#0f5a5a;--teal-lt:#D6F0F0;--orange:#E87722;--orange-lt:#FDE8D5;--cream:#FDFAF5;--dark:#1a1a1a;--mid:#4a4a4a;--light:#f0ece4;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
+
+  nav{background:var(--teal-dk);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .nav-logo{font-family:'Playfair Display',serif;color:#fff;font-size:1rem;}
+  .nav-pills{display:flex;gap:6px;flex-wrap:wrap;}
+  .nav-pills a{color:rgba(255,255,255,.6);font-size:.72rem;font-weight:600;text-decoration:none;padding:5px 11px;border-radius:20px;border:1px solid rgba(255,255,255,.2);transition:all .2s;}
+  .nav-pills a:hover{background:rgba(255,255,255,.15);color:#fff;}
+  .nav-pills a.active{background:var(--orange);color:#fff;border-color:var(--orange);}
+
+  .hero{background:var(--teal);padding:64px 80px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;right:-60px;top:-60px;width:340px;height:340px;border:70px solid rgba(255,255,255,.06);border-radius:50%;}
+  .week-label{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:3.2rem;color:#fff;line-height:1.05;margin-bottom:14px;}
+  .hero p{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.65;max-width:400px;}
+  .hero-cards{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1;}
+  .hero-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:16px 22px;color:#fff;text-align:center;min-width:160px;}
+  .hero-card .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;}
+  .hero-card .lbl{font-size:.7rem;opacity:.65;text-transform:uppercase;letter-spacing:.08em;margin-top:3px;}
+
+  .section{padding:56px 80px;}
+  .section.alt{background:var(--light);}
+  .section.dark{background:var(--teal-dk);}
+  .sec-title{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--teal);margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+  .sec-title::after{content:'';flex:1;height:2px;background:var(--teal-lt);}
+  .sec-title.on-dark{color:#fff;}
+  .sec-title.on-dark::after{background:rgba(255,255,255,.12);}
+
+  .careers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .career-col h4{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);background:var(--teal-lt);padding:8px 14px;border-radius:8px;margin-bottom:10px;}
+  .career-item{background:#fff;border-radius:10px;padding:12px 16px;margin-bottom:8px;font-size:.87rem;color:var(--mid);border-left:3px solid var(--teal-lt);transition:all .2s;}
+  .career-item:hover{border-left-color:var(--orange);color:var(--dark);transform:translateX(4px);}
+
+  .parts-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .part-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 14px;text-align:center;transition:background .2s;}
+  .part-card:hover{background:rgba(255,255,255,.15);}
+  .part-num{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--orange);margin-bottom:6px;}
+  .part-name{font-size:.82rem;font-weight:600;color:#fff;margin-bottom:4px;}
+  .part-desc{font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.4;}
+
+  .fabric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .fabric-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,.06);border-top:4px solid var(--teal);transition:transform .2s;}
+  .fabric-card:hover{transform:translateY(-4px);}
+  .fabric-card:nth-child(even){border-top-color:var(--orange);}
+  .fabric-card h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--teal-dk);margin-bottom:6px;}
+  .fabric-card:nth-child(even) h4{color:var(--orange);}
+  .fabric-card .feel{font-size:.78rem;color:var(--mid);font-weight:600;margin-bottom:5px;}
+  .fabric-card .use{font-size:.8rem;color:var(--mid);line-height:1.5;}
+
+  .callout{border-radius:16px;padding:24px 28px;margin-top:28px;display:flex;align-items:flex-start;gap:16px;}
+  .callout.warn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);}
+  .callout .ico{font-size:1.6rem;flex-shrink:0;}
+  .callout h4{color:#fff;font-size:.92rem;font-weight:600;margin-bottom:5px;}
+  .callout p{color:rgba(255,255,255,.65);font-size:.84rem;line-height:1.6;}
+
+  .exit-card{background:var(--orange);border-radius:20px;padding:36px 44px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;}
+  .exit-card h2{font-family:'Playfair Display',serif;color:#fff;font-size:1.8rem;margin-bottom:10px;}
+  .exit-card>div:first-child p{color:rgba(255,255,255,.85);font-size:.92rem;line-height:1.6;}
+  .exit-qs{display:flex;flex-direction:column;gap:10px;}
+  .eq{background:rgba(255,255,255,.15);border-radius:10px;padding:14px 18px;color:#fff;font-size:.86rem;line-height:1.5;border-left:3px solid rgba(255,255,255,.4);}
+  .eq strong{display:block;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:3px;}
+
+  footer{background:var(--dark);padding:22px 80px;display:flex;justify-content:space-between;align-items:center;}
+  footer span{color:rgba(255,255,255,.35);font-size:.78rem;}
+  .foot-nav{display:flex;gap:12px;}
+  .foot-nav a{color:rgba(255,255,255,.55);font-size:.82rem;text-decoration:none;padding:7px 18px;border:1px solid rgba(255,255,255,.15);border-radius:20px;transition:all .2s;}
+  .foot-nav a:hover{background:#fff;color:var(--dark);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .hero>*{animation:fadeUp .55s ease both;}
+  .hero>*:nth-child(2){animation-delay:.12s;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🧵 Grade 6 Sewing</div>
+  <div class="nav-pills">
+    <a href="index.html">Home</a>
+    <a href="week1.html" class="active">Week 1</a>
+    <a href="week2.html">Week 2</a>
+    <a href="week3.html">Week 3</a>
+    <a href="week4.html">Week 4</a>
+    <a href="week5.html">Week 5</a>
+    <a href="week6.html">Week 6</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="week-label">Week One</div>
+    <h1>Welcome to Sewing!</h1>
+    <p>Explore careers in fashion and textiles, get to know your sewing machine, and discover what different fabrics can do.</p>
+  </div>
+  <div class="hero-cards">
+    <div class="hero-card"><div class="num">12</div><div class="lbl">Careers Explored</div></div>
+    <div class="hero-card"><div class="num">10</div><div class="lbl">Machine Parts</div></div>
+    <div class="hero-card"><div class="num">8</div><div class="lbl">Fabric Types</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="sec-title">Sewing Careers</div>
+  <div class="careers-grid">
+    <div class="career-col">
+      <h4>Fashion &amp; Design</h4>
+      <div class="career-item">✦ Fashion Designer</div>
+      <div class="career-item">✦ Garment Pattern Maker</div>
+      <div class="career-item">✦ Boutique Owner</div>
+      <div class="career-item">✦ Stylist</div>
+    </div>
+    <div class="career-col">
+      <h4>Technical &amp; Industrial</h4>
+      <div class="career-item">✦ Textile Engineer</div>
+      <div class="career-item">✦ Upholsterer</div>
+      <div class="career-item">✦ Costume Technician</div>
+      <div class="career-item">✦ Sail Maker</div>
+    </div>
+    <div class="career-col">
+      <h4>Creative &amp; Specialty</h4>
+      <div class="career-item">✦ Quilter / Craft Seller</div>
+      <div class="career-item">✦ Theatre Costumer</div>
+      <div class="career-item">✦ Alterations Specialist</div>
+      <div class="career-item">✦ Embroidery Artist</div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="sec-title on-dark">Know Your Machine</div>
+  <div class="parts-grid">
+    <div class="part-card"><div class="part-num">1</div><div class="part-name">Presser Foot</div><div class="part-desc">Holds fabric flat against the feed dogs while stitching</div></div>
+    <div class="part-card"><div class="part-num">2</div><div class="part-name">Needle</div><div class="part-desc">Pierces fabric to form stitches — always handle with care</div></div>
+    <div class="part-card"><div class="part-num">3</div><div class="part-name">Bobbin &amp; Case</div><div class="part-desc">Holds the lower thread that locks with the top thread</div></div>
+    <div class="part-card"><div class="part-num">4</div><div class="part-name">Spool Pin</div><div class="part-desc">Holds the thread spool at the top of the machine</div></div>
+    <div class="part-card"><div class="part-num">5</div><div class="part-name">Tension Dial</div><div class="part-desc">Controls how tightly the top thread is pulled through</div></div>
+    <div class="part-card"><div class="part-num">6</div><div class="part-name">Feed Dogs</div><div class="part-desc">Metal teeth that move fabric through the machine</div></div>
+    <div class="part-card"><div class="part-num">7</div><div class="part-name">Stitch Length</div><div class="part-desc">Controls how long each individual stitch is</div></div>
+    <div class="part-card"><div class="part-num">8</div><div class="part-name">Reverse Button</div><div class="part-desc">Sews backwards to lock stitches at start and end</div></div>
+    <div class="part-card"><div class="part-num">9</div><div class="part-name">On/Off Switch</div><div class="part-desc">Never turn on until your teacher gives the signal</div></div>
+    <div class="part-card"><div class="part-num">10</div><div class="part-name">Foot Pedal</div><div class="part-desc">Press gently — the harder you press, the faster it goes</div></div>
+  </div>
+  <div class="callout warn">
+    <div class="ico">⚠️</div>
+    <div>
+      <h4>Safety Rule #1</h4>
+      <p>Never plug in or turn on a sewing machine until your teacher gives the signal. Always keep fingers away from the needle area when the machine is on.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="sec-title">Fabric Explorer</div>
+  <div class="fabric-grid">
+    <div class="fabric-card"><h4>Cotton</h4><div class="feel">Soft · breathable</div><div class="use">Clothing, quilts, bookmarks — great for beginners!</div></div>
+    <div class="fabric-card"><h4>Fleece</h4><div class="feel">Fluffy · stretchy</div><div class="use">Bags, scarves, blankets — doesn't fray at edges!</div></div>
+    <div class="fabric-card"><h4>Denim</h4><div class="feel">Heavy · stiff</div><div class="use">Jeans, bags, aprons — very durable and long-lasting</div></div>
+    <div class="fabric-card"><h4>Satin</h4><div class="feel">Shiny · slippery</div><div class="use">Formal wear, linings — can be tricky to sew</div></div>
+    <div class="fabric-card"><h4>Canvas</h4><div class="feel">Heavy · structured</div><div class="use">Bags, outdoor projects — holds its shape very well</div></div>
+    <div class="fabric-card"><h4>Felt</h4><div class="feel">Dense · flat</div><div class="use">Crafts, decorations — non-woven so it never frays</div></div>
+    <div class="fabric-card"><h4>Jersey Knit</h4><div class="feel">Stretchy · soft</div><div class="use">T-shirts, activewear — needs a special stretch needle</div></div>
+    <div class="fabric-card"><h4>Linen</h4><div class="feel">Textured · crisp</div><div class="use">Summer clothing, bags — wrinkles easily but breathes well</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="exit-card">
+    <div>
+      <h2>Exit Ticket</h2>
+      <p>Grab a sticky note and answer these two questions before you leave. Stick it on the board by the door on your way out.</p>
+    </div>
+    <div class="exit-qs">
+      <div class="eq"><strong>Question 1</strong>Name 3 sewing machine parts you can remember from today.</div>
+      <div class="eq"><strong>Question 2</strong>Which career interested you most, and why?</div>
+      <div class="eq"><strong>Coming Up — Week 2!</strong>We thread the machine and sew our first project — a fabric bookmark. 🧵</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Grade 6 Family Studies · Six-Week Sewing Unit</span>
+  <div class="foot-nav">
+    <a href="index.html">← Home</a>
+    <a href="week2.html">Next: Week 2 →</a>
+  </div>
+</footer>
+</body>
+</html>
