@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growing Food: Seeds to Harvest — Unit Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hd:#2d5016;--hm:#4a7c2f;--hl:#7ab648;--hp:#e8f5d9;--hw:#f4faea;--hb:#bfdb98;
+  --soil:#6b4423;--sl:#c4955a;--sp:#fdf5ec;
+  --sky:#3a7ca5;--skyp:#e8f4fd;
+  --amb:#c67c1a;--ambp:#fef8ec;
+  --teal:#0f6e56;--tealp:#e0f0e8;--tealb:#9fd8c0;
+  --tx:#1e2c14;--tm:#4a5c38;--mu:#7a8c6a;--bd:#d4e4c0;--wh:#fefffe;--bg:#f7faf3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,-apple-system,sans-serif;font-weight:300;background:var(--bg);color:var(--tx);line-height:1.65;font-size:15px}
+
+/* Hero */
+.hero{background:var(--hd);color:#fff;padding:3.5rem 2rem 3rem;position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 90% at 50% 60%,rgba(122,182,72,.18) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;max-width:680px;margin:0 auto}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#c8eba0;margin-bottom:1rem}
+.hero-title{font-family:'Lora',Georgia,serif;font-size:clamp(28px,5vw,44px);font-weight:600;line-height:1.15;margin-bottom:.75rem}
+.hero-sub{font-size:14.5px;color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 1.5rem}
+.hero-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.hm-badge{font-size:12px;font-weight:500;padding:5px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);background:rgba(255,255,255,.1)}
+
+/* Body */
+.page-body{max-width:860px;margin:0 auto;padding:3rem 1.5rem 5rem}
+
+/* Section label */
+.sl{font-size:10.5px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--mu);margin-bottom:1rem;margin-top:2.75rem}
+
+/* Week cards */
+.weeks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.week-card{background:var(--wh);border:1px solid var(--bd);border-radius:14px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:box-shadow .18s,transform .18s}
+.week-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,80,22,.12)}
+.wc-accent{height:4px}
+.wk1 .wc-accent{background:#7ab648}
+.wk2 .wc-accent{background:#5dcaa5}
+.wk3 .wc-accent{background:#378add}
+.wk4 .wc-accent{background:#6aaed6}
+.wk5 .wc-accent{background:#7ab648}
+.wk6 .wc-accent{background:#ef9f27}
+.wc-body{padding:1.25rem 1.375rem;flex:1}
+.wc-num{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.09em;color:var(--mu);margin-bottom:4px}
+.wc-title{font-family:'Lora',Georgia,serif;font-size:17px;font-weight:600;color:var(--tx);margin-bottom:.375rem;line-height:1.25}
+.wc-focus{font-size:13px;color:var(--tm);line-height:1.5;margin-bottom:.875rem}
+.wc-tags{display:flex;flex-wrap:wrap;gap:5px}
+.wc-tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:10px;background:var(--hp);color:var(--hd);border:1px solid var(--hb)}
+.wc-tag-blue{background:var(--skyp);color:#1a5070;border-color:#a8cce4}
+.wc-tag-teal{background:var(--tealp);color:var(--teal);border-color:var(--tealb)}
+.wc-tag-amber{background:var(--ambp);color:#7a4a0a;border-color:#e8c488}
+.wc-footer{padding:.75rem 1.375rem;border-top:1px solid var(--bd);background:var(--bg);display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--mu)}
+.wc-arrow{color:var(--hl);font-size:16px}
+
+/* Overview cards */
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.ov-cell{background:var(--wh);padding:1rem 1.25rem}
+.ov-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);margin-bottom:4px}
+.ov-value{font-family:'Lora',Georgia,serif;font-size:14.5px;color:var(--tx)}
+
+/* Indicators */
+.ind-list{display:flex;flex-direction:column;gap:7px}
+.ind{display:flex;align-items:flex-start;gap:12px;background:var(--wh);border:1px solid var(--bd);border-left:4px solid var(--hl);border-radius:0 10px 10px 0;padding:.75rem 1.1rem;font-size:14px;color:var(--tm);line-height:1.5}
+
+/* GC cards */
+.gc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.gc-card{background:var(--wh);border:1px solid var(--bd);border-radius:10px;padding:1rem 1.25rem}
+.gc-code{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--hm);margin-bottom:3px}
+.gc-name{font-family:'Lora',Georgia,serif;font-size:14px;font-style:italic;color:var(--tx);margin-bottom:5px}
+.gc-desc{font-size:13px;color:var(--tm);line-height:1.5}
+
+/* Materials */
+.mat-wrap{background:var(--sp);border:1px solid #e0c8a0;border-radius:12px;padding:1.25rem 1.5rem}
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px;margin-top:.875rem}
+.mat{background:var(--wh);border:1px solid #e0c8a0;border-radius:8px;padding:6px 11px;font-size:13px;color:var(--soil)}
+
+/* Footer */
+.page-footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--bd);font-size:12px;color:var(--mu);margin-top:2rem}
+
+.dv{height:1px;background:var(--bd);margin:1.5rem 0}
+
+@media(max-width:580px){.hero{padding:2.5rem 1.25rem 2rem}.page-body{padding:2rem 1rem 4rem}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Practical Living &amp; Technology &nbsp;·&nbsp; Grade 6–7</div>
+    <h1 class="hero-title">Growing Food:<br>Seeds to Harvest</h1>
+    <p class="hero-sub">A 6-week unit exploring techniques used to grow food — from seed saving to harvest, with a focus on Canadian agriculture and sustainability.</p>
+    <div class="hero-meta">
+      <span class="hm-badge">6 Weeks</span>
+      <span class="hm-badge">1 × 50 min / week</span>
+      <span class="hm-badge">Grow Tower &amp; Raised Beds</span>
+      <span class="hm-badge">SGC · CTPS · SASM</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <div class="sl">Unit overview</div>
+  <div class="overview-grid">
+    <div class="ov-cell"><div class="ov-label">Grade level</div><div class="ov-value">Grade 6–7 (ages 11–13)</div></div>
+    <div class="ov-cell"><div class="ov-label">Duration</div><div class="ov-value">6 weeks · 1 class/week · 50 min</div></div>
+    <div class="ov-cell"><div class="ov-label">Setting</div><div class="ov-value">Classroom + grow tower + raised beds</div></div>
+    <div class="ov-cell"><div class="ov-cell"><div class="ov-label">Ongoing roles</div><div class="ov-value">Waterer, Observer, Recorder, Tower Lead</div></div></div>
+  </div>
+
+  <div class="sl">Achievement indicators</div>
+  <div class="ind-list">
+    <div class="ind"><span>🌱</span><span>Save vegetable seeds from mature, harvested vegetables</span></div>
+    <div class="ind"><span>🫘</span><span>Start vegetable seeds</span></div>
+    <div class="ind"><span>💧</span><span>Water and fertilize plants</span></div>
+  </div>
+
+  <div class="sl">Global competencies</div>
+  <div class="gc-grid">
+    <div class="gc-card"><div class="gc-code">SGC</div><div class="gc-name">Sustainable Green Communities</div><div class="gc-desc">Students connect food-growing to sustainability, water conservation, and community food systems.</div></div>
+    <div class="gc-card"><div class="gc-code">CTPS</div><div class="gc-name">Critical Thinking &amp; Problem Solving</div><div class="gc-desc">Students compare growing methods, diagnose plant problems, and draw evidence-based conclusions.</div></div>
+    <div class="gc-card"><div class="gc-code">SASM</div><div class="gc-name">Self-Awareness &amp; Self-Management</div><div class="gc-desc">Students manage care responsibilities, reflect on contributions, and self-assess with a checklist.</div></div>
+  </div>
+
+  <div class="sl">Weekly modules</div>
+  <div class="weeks-grid">
+
+    <a class="week-card wk1" href="week-1.html">
+      <div class="wc-accent"></div>
+      <div class="wc-body">
+        <div class="wc-num">Week 1 &nbsp;·&nbsp; Hands-On</div>
+        <div class="wc-title">From Seed to Plan</div>
+        <div class="wc-focus">KWL chart, grow space tour, seed dissection, seed saving from a mature vegetable, first planting, first watering</div>
+        <div class="wc-tags">
+          <span class="wc-tag">Seed saving</span>
+          <span class="wc-tag">Seed starting</span>
+          <span class="wc-tag">Watering</span>
+          <span class="wc-tag wc-tag-blue">CTPS</span>
+        </div>
+      </div>
+      <div class="wc-footer"><span>50 min</span><span class="wc-arrow">&#8594;</span></div>
+    </a>
+
+    <a class="week-card wk2" href="week-2.html">
+      <div class="wc-accent"></div>
+      <div class="wc-body">
+        <div class="wc-num">Week 2 &nbsp;·&nbsp; Hands-On</div>
+        <div class="wc-title">Roots &amp; Routines</div>
+        <div class="wc-focus">Germination check, grow tower vs. raised bed comparison, transplanting seedlings, N-P-K fertilizer intro, first fertilizer dose, care schedule and roles</div>
+        <div class="wc-tags">
+          <span class="wc-tag">Transplanting</span>
+          <span class="wc-tag">Fertilizing</span>
+          <span class="wc-tag wc-tag-blue">CTPS</span>
+          <span class="wc-tag wc-tag-teal">SASM</span>
+        </div>
+      </div>
+      <div class="wc-footer"><span>50 min</span><span class="wc-arrow">&#8594;</span></div>
+    </a>
+
+    <a class="week-card wk3" href="week-3.html">
+      <div class="wc-accent"></div>
+      <div class="wc-body">
+        <div class="wc-num">Week 3 &nbsp;·&nbsp; Standalone Lesson</div>
+        <div class="wc-title">Crops Across Canada</div>
+        <div class="wc-focus">Pulse, cereal, forage, oilseed &amp; specialty crops (corn, wild rice, hemp); growing regions; map activity; sustainability connections</div>
+        <div class="wc-tags">
+          <span class="wc-tag">Canadian Agriculture</span>
+          <span class="wc-tag wc-tag-blue">CTPS</span>
+          <span class="wc-tag" style="background:var(--skyp);color:#1a5070;border-color:#a8cce4">SGC</span>
+        </div>
+      </div>
+      <div class="wc-footer"><span>50 min</span><span class="wc-arrow">&#8594;</span></div>
+    </a>
+
+    <a class="week-card wk4" href="week-4.html">
+      <div class="wc-accent"></div>
+      <div class="wc-body">
+        <div class="wc-num">Week 4 &nbsp;·&nbsp; Hands-On</div>
+        <div class="wc-title">Tending &amp; Troubleshooting</div>
+        <div class="wc-focus">Growth measurements, diagnosing plant problems, Canadian crop connection, second fertilizer dose, peer share using evidence-based language</div>
+        <div class="wc-tags">
+          <span class="wc-tag">Fertilizing</span>
+          <span class="wc-tag wc-tag-blue">CTPS</span>
+          <span class="wc-tag wc-tag-teal">SASM</span>
+        </div>
+      </div>
+      <div class="wc-footer"><span>50 min</span><span class="wc-arrow">&#8594;</span></div>
+    </a>
+
+    <a class="week-card wk5" href="week-5.html">
+      <div class="wc-accent"></div>
+      <div class="wc-body">
+        <div class="wc-num">Week 5 &nbsp;·&nbsp; Hands-On</div>
+        <div class="wc-title">Sustainable Growing</div>
+        <div class="wc-focus">Water conservation, rain gauge build, drip vs. hand watering, SGC discussion groups, evidence-based peer sharing, Week 6 preview</div>
+        <div class="wc-tags">
+          <span class="wc-tag">Watering</span>
+          <span class="wc-tag" style="background:var(--skyp);color:#1a5070;border-color:#a8cce4">SGC</span>
+          <span class="wc-tag wc-tag-teal">SASM</span>
+        </div>
+      </div>
+      <div class="wc-footer"><span>50 min</span><span class="wc-arrow">&#8594;</span></div>
+    </a>
+
+    <a class="week-card wk6" href="week-6.html">
+      <div class="wc-accent"></div>
+      <div class="wc-body">
+        <div class="wc-num">Week 6 &nbsp;·&nbsp; Final Class</div>
+        <div class="wc-title">Harvest, Reflect &amp; Close the Loop</div>
+        <div class="wc-focus">Final measurements, harvest, seed saving from own plants, 6-week data comparison, self-assessment checklist, community connection discussion</div>
+        <div class="wc-tags">
+          <span class="wc-tag wc-tag-amber">Seed saving</span>
+          <span class="wc-tag wc-tag-amber">Harvest</span>
+          <span class="wc-tag wc-tag-teal">SASM</span>
+          <span class="wc-tag" style="background:var(--skyp);color:#1a5070;border-color:#a8cce4">SGC</span>
+        </div>
+      </div>
+      <div class="wc-footer"><span>50 min &nbsp;·&nbsp; Journal due</span><span class="wc-arrow">&#8594;</span></div>
+    </a>
+
+  </div>
+
+  <div class="sl">Materials &amp; resources</div>
+  <div class="mat-wrap">
+    <div style="font-size:13px;color:var(--soil);font-weight:500;">Available in your classroom &amp; garden</div>
+    <div class="mat-grid">
+      <div class="mat">Grow tower</div>
+      <div class="mat">Raised garden beds</div>
+      <div class="mat">Vegetable seeds</div>
+      <div class="mat">Potting mix / soil</div>
+      <div class="mat">Seed-starting trays</div>
+      <div class="mat">Watering cans</div>
+      <div class="mat">Liquid fertilizer</div>
+      <div class="mat">Seed envelopes</div>
+      <div class="mat">Labels &amp; markers</div>
+      <div class="mat">Garden journals</div>
+      <div class="mat">Rulers</div>
+      <div class="mat">Mature vegetable (seeds)</div>
+    </div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="page-footer">
+    Growing Food: Seeds to Harvest &nbsp;·&nbsp; Grade 6–7 Unit &nbsp;·&nbsp; Practical Living &amp; Technology
+  </div>
+
+</div>
+</body>
+</html>

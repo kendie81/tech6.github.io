@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 — From Seed to Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* GitHub Pages fallback: if Google Fonts blocked, use system serif/sans */
+body { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; }
+.ht, .gt, .jt, .eht, .bt, .stitch-name, .sc-name, .crop-name, .week-title { font-family: 'Lora', Georgia, 'Times New Roman', serif; }
+</style>
+<style>
+:root{--hd:#2d5016;--hm:#4a7c2f;--hl:#7ab648;--hp:#e8f5d9;--hw:#f4faea;--hb:#bfdb98;--soil:#6b4423;--sl:#c4955a;--sp:#fdf5ec;--sky:#3a7ca5;--skyp:#e8f4fd;--amb:#c67c1a;--ambp:#fef8ec;--tx:#1e2c14;--tm:#4a5c38;--mu:#7a8c6a;--bd:#d4e4c0;--wh:#fefffe;--bg:#f7faf3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--bg);color:var(--tx);line-height:1.65;font-size:15px}
+.ph{background:var(--hd);color:#fff;padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 90% 40%,rgba(122,182,72,.18) 0%,transparent 70%);pointer-events:none}
+.hi{position:relative;max-width:820px;margin:0 auto}
+.wp{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:rgba(122,182,72,.25);color:#c8eba0;border:1px solid rgba(122,182,72,.4);border-radius:20px;padding:4px 13px;margin-bottom:.875rem}
+.ht{font-family:'Lora',serif;font-size:clamp(22px,4vw,32px);font-weight:600;line-height:1.2;margin-bottom:.375rem}
+.hs{font-size:13.5px;color:rgba(255,255,255,.65)}
+.tb{display:inline-flex;align-items:center;gap:6px;margin-top:1rem;font-size:12px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px}
+.pb{max-width:820px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+.sl{font-size:10.5px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--mu);margin-bottom:.875rem;margin-top:2.25rem}
+.gb{background:var(--hp);border:1px solid var(--hb);border-radius:12px;padding:1.25rem 1.5rem}
+.gt{font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--hd);margin-bottom:.75rem}
+.gi{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--tm);margin-bottom:.5rem;line-height:1.5}
+.gi:last-child{margin-bottom:0}
+.gc{width:18px;height:18px;border-radius:50%;background:var(--hl);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.gc svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ca{border-radius:10px;padding:1rem 1.25rem;font-size:14px;line-height:1.55}
+.ca-g{background:var(--hw);border:1px solid var(--hb);color:var(--tm)}
+.ca-s{background:var(--skyp);border:1px solid #a8cce4;color:#1a5070}
+.ca-a{background:var(--ambp);border:1px solid #e8c488;color:#7a4a0a}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{background:var(--wh);border:1px solid var(--bd);border-radius:12px;overflow:hidden;display:flex}
+.sn{background:var(--hp);color:var(--hd);font-family:'Lora',serif;font-size:17px;font-weight:600;min-width:52px;display:flex;align-items:flex-start;justify-content:center;padding:1.1rem .5rem 0;flex-shrink:0}
+.sb{padding:1rem 1.25rem;flex:1}
+.st{font-weight:500;font-size:14.5px;color:var(--tx);margin-bottom:4px}
+.sd{font-size:14px;color:var(--tm);line-height:1.55}
+.tip{background:var(--sp);border-left:3px solid var(--sl);border-radius:0 8px 8px 0;padding:.5rem .875rem;margin-top:.625rem;font-size:13px;color:var(--soil);line-height:1.5}
+.ss{display:flex;flex-direction:column;gap:6px;margin-top:.625rem}
+.ss div{border-radius:8px;padding:.625rem 1rem;font-size:13.5px;line-height:1.5}
+.jw{background:var(--wh);border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.jh{background:var(--ambp);border-bottom:1px solid #e8d4b0;padding:.875rem 1.25rem;display:flex;align-items:center;gap:10px}
+.jt{font-family:'Lora',serif;font-size:15px;font-weight:600;color:#7a4a0a}
+.jb{padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.875rem}
+.jp{font-size:14px;color:var(--tm);line-height:1.55;padding-bottom:.875rem;border-bottom:1px dashed var(--bd)}
+.jp:last-child{border-bottom:none;padding-bottom:0}
+.pn{font-weight:500;color:var(--amb);margin-right:4px}
+.ew{background:var(--wh);border:2px solid var(--hl);border-radius:12px;overflow:hidden}
+.eh{background:var(--hd);padding:.875rem 1.25rem}
+.eht{font-family:'Lora',serif;font-size:15px;font-weight:600;color:#fff}
+.eb{padding:1.25rem;display:flex;flex-direction:column;gap:1.25rem}
+.eq{font-size:14px;color:var(--tm);line-height:1.55;padding-bottom:1.25rem;border-bottom:1px solid var(--bd)}
+.eq:last-child{border-bottom:none;padding-bottom:0}
+.eq strong{color:var(--tx);font-weight:500}
+.cg{display:flex;flex-direction:column;gap:7px;margin-top:.625rem}
+.ch{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:.625rem 1rem;cursor:pointer;transition:background .15s;font-size:14px;color:var(--tm)}
+.ch:hover{background:var(--hp);border-color:var(--hl)}
+.ch.sel{background:var(--hp);border-color:var(--hm);color:var(--hd);font-weight:500}
+.cd{width:16px;height:16px;border-radius:50%;border:2px solid var(--bd);flex-shrink:0;transition:all .15s}
+.ch.sel .cd{background:var(--hl);border-color:var(--hm)}
+.or{width:100%;min-height:80px;border:1px solid var(--bd);border-radius:8px;padding:.75rem;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--tx);background:var(--bg);resize:vertical;margin-top:.625rem;line-height:1.55}
+.or:focus{outline:none;border-color:var(--hm);background:var(--wh)}
+.btn{display:block;width:100%;padding:.75rem 1rem;background:var(--hd);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--hm)}
+.rm{display:none;margin-top:.875rem;padding:.875rem 1rem;border-radius:8px;font-size:14px;line-height:1.6}
+.rm-g{background:var(--hp);border:1px solid var(--hb);color:var(--hd)}
+.rm-a{background:var(--ambp);border:1px solid #e8c488;color:#7a4a0a}
+.ors{display:none;background:var(--hp);border:1px solid var(--hb);border-radius:8px;padding:.75rem 1rem;margin-top:.625rem;font-size:13.5px;color:var(--hd)}
+.dv{height:1px;background:var(--bd);margin:2rem 0}
+@media(max-width:580px){.ph{padding:2rem 1.25rem 1.5rem}.pb{padding:1.5rem 1rem 3rem}.step{flex-direction:column}.sn{min-width:auto;padding:.75rem 1.25rem .25rem}}
+</style>
+
+<style>
+.site-nav{background:#1e2c14;padding:.625rem 1.5rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;font-family:'DM Sans',Georgia,sans-serif;font-size:13px}
+.site-nav a{color:rgba(255,255,255,.75);text-decoration:none;padding:4px 10px;border-radius:14px;border:1px solid rgba(255,255,255,.18);transition:background .15s}
+.site-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+.site-nav .nav-home{font-weight:500;color:#c8eba0;border-color:rgba(122,182,72,.5)}
+.site-nav .nav-spacer{flex:1}
+.site-nav .nav-current{color:rgba(255,255,255,.45);font-size:12px;border:none;padding:0}
+</style>
+
+</head>
+<body>
+<nav class="site-nav">
+<a class="nav-home" href="index.html">&#8962; Unit Home</a>
+<span class="nav-spacer"></span>
+<span class="nav-current">Week 1</span>
+<a href="week-2.html">Week 2 &#8594;</a>
+</nav>
+<header class="ph">
+  <div class="hi">
+    <div class="wp">Week 1 of 6 &nbsp;·&nbsp; Hands-On</div>
+    <h1 class="ht">From Seed to Plan</h1>
+    <p class="hs">Growing Food: Seeds to Harvest &nbsp;·&nbsp; Grade 6–7</p>
+    <div class="tb">&#9679; 50 minutes</div>
+  </div>
+</header>
+<div class="pb">
+
+  <div class="sl">Learning goals</div>
+  <div class="gb">
+    <div class="gt">By the end of this class, I can…</div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Explain what a seed needs in order to germinate</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Save seeds from a mature vegetable and store them correctly</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Plant seeds in a seed-starting tray and record my planting data</span></div>
+    <div class="gi"><div class="gc"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div><span>Compare the grow tower and raised beds and predict one difference</span></div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">What we're doing today</div>
+  <div class="ca ca-g">Today kicks off our 6-week growing journey. We'll explore what seeds really are, save seeds from a real vegetable, plant our first seeds in trays, and take a close look at the two growing spaces we'll use — a grow tower and raised outdoor beds. You'll start your garden journal today and use it every week.</div>
+
+  <div class="dv"></div>
+  <div class="sl">Step-by-step &nbsp;·&nbsp; 50 minutes</div>
+  <div class="steps">
+
+    <div class="step">
+      <div class="sn">1</div>
+      <div class="sb">
+        <div class="st">KWL Chart &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">8 min</span></div>
+        <div class="sd">In your journal, draw three columns: <em>What I Know</em>, <em>What I Want to Know</em>, <em>What I Learned</em>. Fill in the first two columns independently, then share one item with a partner. Complete the third column at the end of class.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">2</div>
+      <div class="sb">
+        <div class="st">Tour — Grow Tower &amp; Raised Beds &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">7 min</span></div>
+        <div class="sd">Walk to both spaces. Note three things you observe and one question for each. Think about: how are they different? Which do you predict will grow better — and why?</div>
+        <div class="tip">Sketch a quick diagram of each space in your journal.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">3</div>
+      <div class="sb">
+        <div class="st">Seed Dissection &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">7 min</span></div>
+        <div class="sd">Peel the seed coat off a soaked bean. Inside, find the two cotyledons and the tiny embryo between them. Sketch and label all three parts in your journal.</div>
+        <div class="ca ca-s" style="margin-top:.75rem">A seed has everything it needs to begin life — it just needs water, warmth, and sometimes light to wake up. This is called <strong>germination</strong>.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">4</div>
+      <div class="sb">
+        <div class="st">Seed Saving from a Mature Vegetable &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">Follow along with a tomato, pepper, or squash:</div>
+        <div class="ss">
+          <div class="ca-g">① Cut open the vegetable and scoop seeds into a bowl of water.</div>
+          <div class="ca-g">② Rinse and rub off pulp. Viable seeds sink; empty ones float.</div>
+          <div class="ca-g">③ Spread on a paper towel — needs at least 24 hours to dry.</div>
+          <div class="ca-g">④ Once dry, place in seed envelope. Label: variety, date, your name.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">5</div>
+      <div class="sb">
+        <div class="st">Plant Seeds in Your Tray &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">10 min</span></div>
+        <div class="sd">Choose your variety, then:</div>
+        <div class="ss">
+          <div class="ca-a">① Fill each cell with potting mix — gently packed, not tight.</div>
+          <div class="ca-a">② Make a hole about as deep as the seed is wide (roughly 1–2 cm).</div>
+          <div class="ca-a">③ Drop 1–2 seeds in and cover gently with soil.</div>
+          <div class="ca-a">④ Label each cell. Record in journal: variety, date, tray location.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">6</div>
+      <div class="sb">
+        <div class="st">First Watering Practice &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">5 min</span></div>
+        <div class="sd">Do the <strong>finger test</strong> — push your finger 2 cm into the soil. Dry at the tip = needs water. Water slowly and evenly. Overwatering is one of the most common mistakes new growers make.</div>
+        <div class="tip">Record the date and whether you watered in your journal. You'll do this every week.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">7</div>
+      <div class="sb">
+        <div class="st">Complete Your KWL Chart &nbsp;<span style="font-weight:300;color:var(--mu);font-size:13px">3 min</span></div>
+        <div class="sd">Fill in the <em>What I Learned</em> column. Aim for at least two things you didn't know before today's class.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">Garden journal — Week 1 entry</div>
+  <div class="jw">
+    <div class="jh"><span style="font-size:18px">📓</span><span class="jt">Complete before next class</span></div>
+    <div class="jb">
+      <div class="jp"><span class="pn">1.</span>Draw and label the inside of a seed (seed coat, cotyledon, embryo). What is the job of each part?</div>
+      <div class="jp"><span class="pn">2.</span>Describe the seed-saving process in your own words. Why do we dry seeds before storing them?</div>
+      <div class="jp"><span class="pn">3.</span>Record your planting: What variety did you plant? What date? Where is your tray located?</div>
+      <div class="jp"><span class="pn">4.</span>What is one difference you predict between the grow tower and raised beds over the next 6 weeks? Explain your thinking.</div>
+    </div>
+  </div>
+
+  <div class="dv"></div>
+  <div class="sl">Exit ticket</div>
+  <div class="ew">
+    <div class="eh"><div class="eht">Quick check — Week 1</div></div>
+    <div class="eb">
+
+      <div class="eq">
+        <strong>Q1 — Multiple choice.</strong> A seed is placed in soil but does not germinate. Which is the most likely reason?
+        <div class="cg" id="q1">
+          <div class="ch" onclick="pick('q1','a')"><div class="cd"></div>The soil is too warm and moist</div>
+          <div class="ch" onclick="pick('q1','b')"><div class="cd"></div>The seed has no access to water</div>
+          <div class="ch" onclick="pick('q1','c')"><div class="cd"></div>The seed was planted too shallow</div>
+          <div class="ch" onclick="pick('q1','d')"><div class="cd"></div>The soil has too many nutrients</div>
+        </div>
+      </div>
+
+      <div class="eq">
+        <strong>Q2 — Multiple choice.</strong> During seed saving, some seeds float and some sink in water. What does this tell you?
+        <div class="cg" id="q2">
+          <div class="ch" onclick="pick('q2','a')"><div class="cd"></div>Floating seeds are heavier and healthier</div>
+          <div class="ch" onclick="pick('q2','b')"><div class="cd"></div>Sinking seeds are likely viable; floating seeds may be empty</div>
+          <div class="ch" onclick="pick('q2','c')"><div class="cd"></div>All seeds float until completely dry</div>
+          <div class="ch" onclick="pick('q2','d')"><div class="cd"></div>The vegetable type determines whether seeds sink or float</div>
+        </div>
+      </div>
+
+      <div class="eq">
+        <strong>Q3 — Open response.</strong> You have four seed varieties but only three tray cells left. Describe how you would decide which three to plant and explain your reasoning.
+        <textarea class="or" id="q3" placeholder="Write your response here…"></textarea>
+        <div class="ors" id="q3s"></div>
+      </div>
+
+      <button class="btn" onclick="sub()">Submit exit ticket</button>
+      <div class="rm" id="rm"></div>
+    </div>
+  </div>
+
+</div>
+<script>
+const ans={q1:'b',q2:'b'};
+const sel={};
+const fb={q1:'Seeds need water to activate germination. Without moisture, the embryo cannot begin growing.',q2:'Dense, viable seeds sink. Hollow or unfertilized seeds float — the float test is a quick viability check.'};
+function pick(q,v){sel[q]=v;document.getElementById(q).querySelectorAll('.ch').forEach((el,i)=>el.classList.toggle('sel',['a','b','c','d'][i]===v));}
+function sub(){
+  const t=document.getElementById('q3').value.trim();
+  if(t){const s=document.getElementById('q3s');s.style.display='block';s.innerHTML='<strong>Your response:</strong> '+t;}
+  let c=0;['q1','q2'].forEach(q=>{if(sel[q]===ans[q])c++;});
+  const m=document.getElementById('rm');m.style.display='block';
+  let h='<strong>Multiple choice: '+c+'/2</strong><br><br>';
+  ['q1','q2'].forEach((q,i)=>{const mk=sel[q]===ans[q]?'✓':'✗';h+='<strong>Q'+(i+1)+' '+mk+':</strong> '+fb[q]+'<br><br>';});
+  h+=t?'<strong>Q3:</strong> Response recorded. Strong answers consider germination time, plant size, and which crops suit each growing space.':'<strong>Q3:</strong> Don\'t forget to write your response above!';
+  m.className='rm '+(c===2?'rm-g':'rm-a');m.innerHTML=h;
+}
+</script>
+</body>
+</html>
